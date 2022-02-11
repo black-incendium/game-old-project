@@ -2,17 +2,10 @@ import { debug } from './debug/debug.js';
 
 let elements = (()=>{
 
-    let canvas = null, ctx = null, initialized = false;
+    let canvas = null;
+    let ctx = null;
 
-    function initialize(){
-
-        if (initialized) { 
-
-            debug.print('you are trying to initialize already initialized element'); 
-            return;
-        }
-
-        initialized = true;
+    function initialize() {
 
         canvas = document.querySelector('canvas');
         canvas.width = window.innerWidth;
@@ -23,8 +16,9 @@ let elements = (()=>{
         ctx.fillRect(100,100,500,500)
     }
 
+    initialize();
+
     return {
-        initialize,
         canvas,
         ctx
     }

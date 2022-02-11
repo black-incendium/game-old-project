@@ -1,4 +1,4 @@
-let mapManager = (()=>{
+let exampleManager = (() => {
 
     // variables
 
@@ -6,15 +6,11 @@ let mapManager = (()=>{
 
     }
 
-    function drawMap() {
-
-    }
-
     initialize();
 
     return {
-
+        
     }
 })();
 
-export { mapManager }
+export { exampleManager };
