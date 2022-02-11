@@ -12,8 +12,9 @@ let eventManager = (() => {
 
     }
 
+    initialize();
+
     return {
-        initialize,
         fireEvent,
         setupEventListener
     }
