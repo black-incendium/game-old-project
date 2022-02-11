@@ -1,4 +1,4 @@
-import { debug } from './../debug/debug.js';
+import { debug } from './debug/debug.js';
 
 let elements = (()=>{
 
@@ -24,8 +24,10 @@ let elements = (()=>{
     }
 
     return {
-        initialize
+        initialize,
+        canvas,
+        ctx
     }
 })();
 
-export {elements};
+export { elements };

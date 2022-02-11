@@ -1,3 +1,3 @@
-import { elements } from './modules/elements.js';
+import { elements } from './elements.js';
 
 elements.initialize();
