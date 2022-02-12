@@ -1,6 +1,6 @@
 let mapManager = (()=>{
 
-    // variables
+    const gl = {};
 
     function initialize() {
 
@@ -16,5 +16,7 @@ let mapManager = (()=>{
 
     }
 })();
+
+Object.freeze(mapManager);
 
 export { mapManager }

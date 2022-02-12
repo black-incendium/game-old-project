@@ -1,9 +1,9 @@
 let exampleManager = (() => {
 
-    // variables
+    const gl = {};
 
     function initialize() {
-
+        
     }
 
     initialize();
@@ -12,5 +12,7 @@ let exampleManager = (() => {
         
     }
 })();
+
+Object.freeze(exampleManager);
 
 export { exampleManager };

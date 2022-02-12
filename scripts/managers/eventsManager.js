@@ -1,4 +1,6 @@
-let eventManager = (() => {
+let eventsManager = (() => {
+
+    const gl = {};
 
     function initialize() {
 
@@ -20,4 +22,6 @@ let eventManager = (() => {
     }
 })();
 
-export { eventManager };
+Object.freeze(eventsManager)
+
+export { eventsManager };

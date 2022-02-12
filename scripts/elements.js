@@ -2,26 +2,32 @@ import { debug } from './debug/debug.js';
 
 let elements = (()=>{
 
-    let canvas = null;
-    let ctx = null;
+    const gl = {};
 
     function initialize() {
 
-        canvas = document.querySelector('canvas');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        gl.canvas = document.querySelector('canvas');
+        gl.canvas.width = window.innerWidth;
+        gl.canvas.height = window.innerHeight;
 
-        ctx = canvas.getContext('2d');
-        ctx.fillStyle = "red";
-        ctx.fillRect(100,100,500,500)
+        gl.ctx = canvas.getContext('2d');
+        gl.ctx.fillStyle = "red";
+        gl.ctx.fillRect(100,100,500,500);
     }
 
     initialize();
 
     return {
-        canvas,
-        ctx
+        get canvas() {
+            return gl.canvas;
+        },
+
+        get ctx() {
+            return gl.ctx;
+        }
     }
 })();
+
+Object.freeze(elements);
 
 export { elements };
