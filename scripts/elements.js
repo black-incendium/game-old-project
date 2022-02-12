@@ -10,7 +10,7 @@ let elements = (()=>{
         gl.canvas.width = window.innerWidth;
         gl.canvas.height = window.innerHeight;
 
-        gl.ctx = canvas.getContext('2d');
+        gl.ctx = gl.canvas.getContext('2d');
         gl.ctx.fillStyle = "red";
         gl.ctx.fillRect(100,100,500,500);
     }
