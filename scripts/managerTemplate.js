@@ -1,6 +1,6 @@
 let exampleManager = (() => {
 
-    const gl = {};
+    // gloabl variables declarations
 
     function initialize() {
         
@@ -8,11 +8,9 @@ let exampleManager = (() => {
 
     initialize();
 
-    return {
+    return Object.freeze({
         
-    }
+    });
 })();
-
-Object.freeze(exampleManager);
 
 export { exampleManager };

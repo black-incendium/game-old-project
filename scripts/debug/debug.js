@@ -1,9 +1,9 @@
 let debug = (() => {
 
-    const gl = {};
+    let printStyle = null;
 
     function initialize() {
-        gl.printStyle = {
+        printStyle = {
             'error': 'color: red; font-weight:bold;',
             'warning': 'color: yellow; font-weight:bold;',
             'default': 'font-weight:bold;'
@@ -12,21 +12,19 @@ let debug = (() => {
 
     function print(msg, type) {
 
-        if (gl.printStyle[type] == undefined) {
+        if (printStyle[type] == undefined) {
             type = 'default'
         }
         
-        console.log(`%c${msg}`, gl.printStyle[type]);
+        console.log(`%c${msg}`, printStyle[type]);
         //console.log(error);
     }
 
     initialize();
 
-    return {
+    return Object.freeze({
         print
-    }
+    });
 })();
-
-Object.freeze(debug);
 
 export { debug };

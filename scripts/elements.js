@@ -2,27 +2,26 @@ import { debug } from './debug/debug.js';
 
 let elements = (()=>{
 
-    const gl = {};
+    let canvas = null;
+    let ctx = null;
 
     function initialize() {
 
-        gl.canvas = document.querySelector('canvas');
-        gl.ctx = gl.canvas.getContext('2d');
+        canvas = document.querySelector('canvas');
+        ctx = canvas.getContext('2d');
     }
 
     initialize();
 
-    return {
+    return Object.freeze({
         get canvas() {
-            return gl.canvas;
+            return canvas;
         },
 
         get ctx() {
-            return gl.ctx;
+            return ctx;
         }
-    }
+    });
 })();
-
-Object.freeze(elements);
 
 export { elements };

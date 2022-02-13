@@ -12,11 +12,9 @@ let mapManager = (()=>{
 
     initialize();
 
-    return {
+    return Object.freeze({
 
-    }
+    });
 })();
-
-Object.freeze(mapManager);
 
 export { mapManager }

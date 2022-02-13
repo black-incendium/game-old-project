@@ -1,9 +1,10 @@
 let eventsManager = (() => {
 
-    const gl = {};
+    let contexts = null;
 
     function initialize() {
 
+        contexts = {};
     }
 
     function fireEvent() {
@@ -16,12 +17,10 @@ let eventsManager = (() => {
 
     initialize();
 
-    return {
+    return Object.freeze({
         fireEvent,
         setupEventListener
-    }
+    });
 })();
-
-Object.freeze(eventsManager)
 
 export { eventsManager };
