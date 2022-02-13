@@ -4,7 +4,7 @@
  * @author black-incendium
  */
 
-let exampleManager = (() => {
+ let exampleManager = (() => {
 
     let callbacks = null;
 
