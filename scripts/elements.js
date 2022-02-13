@@ -1,5 +1,11 @@
 import { debug } from './debug/debug.js';
 
+/**
+ * @fileoverview object that contains references to DOM elements and other things like canvas drawing context
+ * 
+ * @author black-incendium
+ */
+
 let elements = (()=>{
 
     let canvas = null;
@@ -8,20 +14,15 @@ let elements = (()=>{
     function initialize() {
 
         canvas = document.querySelector('canvas');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
         ctx = canvas.getContext('2d');
-        ctx.fillStyle = "red";
-        ctx.fillRect(100,100,500,500)
     }
 
     initialize();
 
-    return {
+    return Object.freeze({
         canvas,
         ctx
-    }
+    });
 })();
 
 export { elements };

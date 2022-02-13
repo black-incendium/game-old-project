@@ -1,9 +1,19 @@
-let debug = (()=>{
+/**
+ * @fileoverview object responsible for printing debug messages (errors, warnings)
+ * 
+ * @author black-incendium
+ */
 
-    let printStyle = {
-        'error': 'color: red; font-weight:bold;',
-        'warning': 'color: yellow; font-weight:bold;',
-        'default': 'font-weight:bold;'
+let debug = (() => {
+
+    let printStyle = null;
+
+    function initialize() {
+        printStyle = {
+            'error': 'color: red; font-weight:bold;',
+            'warning': 'color: yellow; font-weight:bold;',
+            'default': 'font-weight:bold;'
+        }
     }
 
     function print(msg, type) {
@@ -16,9 +26,11 @@ let debug = (()=>{
         //console.log(error);
     }
 
-    return {
+    initialize();
+
+    return Object.freeze({
         print
-    }
+    });
 })();
 
-export {debug};
+export { debug };

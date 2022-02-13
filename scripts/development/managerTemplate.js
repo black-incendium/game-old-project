@@ -1,17 +1,15 @@
-import { eventsManager } from './eventsManager.js'
-
 /**
- * @fileoverview manager object responsible for handling map data and drawing map
+ * @fileoverview 
  * 
  * @author black-incendium
  */
 
-let mapManager = (()=>{
+ let exampleManager = (() => {
 
     let callbacks = null;
 
     function initialize() {
-
+        
         setupCallbacks();
         setupEventListeners();
     }
@@ -24,11 +22,8 @@ let mapManager = (()=>{
     }
 
     function setupEventListeners() {
-
-    }
-
-    function drawMap() {
-
+        
+        //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
     initialize();
@@ -38,4 +33,4 @@ let mapManager = (()=>{
     });
 })();
 
-export { mapManager }
+export { exampleManager };
