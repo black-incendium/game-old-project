@@ -20,13 +20,8 @@ let elements = (()=>{
     initialize();
 
     return Object.freeze({
-        get canvas() {
-            return canvas;
-        },
-
-        get ctx() {
-            return ctx;
-        }
+        canvas,
+        ctx
     });
 })();
 
