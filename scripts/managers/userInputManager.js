@@ -21,11 +21,17 @@ import { eventsManager } from './eventsManager.js';
 
         eventsManager.createContext('userInput');
         eventsManager.createEvent('userInput', 'click');
+        eventsManager.createEvent('userInput', 'keydown');
     }
 
     function setupDocumentEventListeners() {
+
         document.addEventListener('click', e => {
             eventsManager.fireEvent('userInput', 'click', e);
+        });
+
+        document.addEventListener('keydown', e => {
+            eventsManager.fireEvent('userInput', 'keydown', e);
         });
     }
 
