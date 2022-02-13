@@ -1,3 +1,9 @@
+/**
+ * @fileoverview responsible for 
+ * 
+ * @author black-incendium
+ */
+
 let exampleManager = (() => {
 
     // gloabl variables declarations

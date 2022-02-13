@@ -1,5 +1,11 @@
 import { debug } from './debug/debug.js';
 
+/**
+ * @fileoverview object that contains references to DOM elements and other things like canvas drawing context
+ * 
+ * @author black-incendium
+ */
+
 let elements = (()=>{
 
     let canvas = null;

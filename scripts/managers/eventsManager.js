@@ -1,3 +1,9 @@
+/**
+ * @fileoverview manager object responsible for handling events and eventListeners 
+ * 
+ * @author black-incendium
+ */
+
 let eventsManager = (() => {
 
     let contexts = null;

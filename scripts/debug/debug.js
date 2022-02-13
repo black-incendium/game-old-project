@@ -1,3 +1,9 @@
+/**
+ * @fileoverview object responsible for printing debug messages (errors, warnings)
+ * 
+ * @author black-incendium
+ */
+
 let debug = (() => {
 
     let printStyle = null;
