@@ -6,8 +6,6 @@
 
 let mapManager = (()=>{
 
-    const gl = {};
-
     function initialize() {
 
     }

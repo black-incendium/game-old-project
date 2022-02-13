@@ -1,10 +1,10 @@
 /**
- * @fileoverview 
+ * @fileoverview manager object responsible for making changes needed while game is resized
  * 
  * @author black-incendium
  */
 
-let exampleManager = (() => {
+ let resizeManager = (() => {
 
     // gloabl variables declarations
 
@@ -19,4 +19,4 @@ let exampleManager = (() => {
     });
 })();
 
-export { exampleManager };
+export { resizeManager };
