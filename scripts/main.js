@@ -3,3 +3,6 @@ import { debug } from './debug/debug.js';
 import { userInputManager } from './managers/userInputManager.js';
 import { mapManager } from './managers/mapManager.js';
 import { testManager } from './development/testManager.js';
+import { resizeManager } from './managers/resizeManager.js';
+
+resizeManager.gameStarted();
