@@ -4,7 +4,7 @@
  * @author black-incendium
  */
 
- let exampleManager = (() => {
+ let cameraManager = (() => {
 
     let callbacks = null;
 
@@ -27,14 +27,17 @@
     }
 
     function getCameraPosition() {
-        
+        return {
+            x: 0,
+            y: 0
+        }
     }
 
     initialize();
 
     return Object.freeze({
-        
+        getCameraPosition
     });
 })();
 
-export { exampleManager };
+export { cameraManager };
