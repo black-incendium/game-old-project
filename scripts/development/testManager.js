@@ -21,27 +21,17 @@ import { eventsManager } from './../managers/eventsManager.js'
     function setupCallbacks() {
 
         callbacks = {
-            callback1,
-            callback2
+            callback1
         };
     }
 
     function setupEventListeners() {
         
-        mainEventListener = eventsManager.createEventListener('userInput', 'click', callbacks.callback1);
-        eventsManager.createEventListener('userInput', 'keydown', callbacks.callback2);
+        eventsManager.createEventListener('userInput', 'keydown', callbacks.callback1);
     }
 
-    function callback1() {
-        debug.print('event listener active')
-    }
-
-    function callback2(data) {
-        debug.print('callback2 fired')
-        if (data.key == 'r') {
-            debug.print('callback2 fired and inside if')
-            eventsManager.removeEventListener(mainEventListener);
-        }
+    function callback1(data) {
+        console.log(data)
     }
 
     initialize();
