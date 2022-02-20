@@ -27,16 +27,41 @@
     }
 
     function getCameraPosition() {
+        
         return {
             x: 0,
             y: 0
         }
     }
 
+    function getCameraAspectRatio() {
+        
+        return {
+            width: 16,
+            height: 9
+        }
+    } 
+
+    function getCameraZoom() {
+
+        return 1;
+    }
+
     initialize();
 
     return Object.freeze({
-        getCameraPosition
+
+        get cameraPosition() {
+            return getCameraPosition();
+        },
+
+        get cameraAspectRatio() {
+            return getCameraAspectRatio();
+        },
+
+        get cameraZoom() {
+            return getCameraZoom();
+        }
     });
 })();
 
