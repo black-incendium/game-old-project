@@ -1,5 +1,5 @@
 import { userInputManager } from './userInputManager.js';
-import { testManager } from './testManager.js';
+import { testManager } from './../development/testManager.js';
 import { resizeManager } from './resizeManager.js';
 import { drawManager } from './drawManager.js';
 
@@ -33,10 +33,16 @@ import { drawManager } from './drawManager.js';
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
+    function createGlobalReference() {
+
+        window.gameManager = gameManager;
+    }
+
     initialize();
 
     return Object.freeze({
         
+        createGlobalReference
     });
 })();
 

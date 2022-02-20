@@ -1,1 +1,3 @@
-import { gameManager } from "./managers/gameManager";
+import { gameManager } from "./managers/gameManager.js";
+
+gameManager.createGlobalReference();
