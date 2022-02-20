@@ -7,11 +7,26 @@
  let cameraManager = (() => {
 
     let callbacks = null;
+    let cameraPosition = null;
+    let cameraAspectRatio = null
+    let cameraZoom = 0;
 
     function initialize() {
         
         setupCallbacks();
         setupEventListeners();
+
+        cameraPosition = {
+            x: 0,
+            y: 0
+        }
+
+        cameraAspectRatio = {
+            width: 16,
+            height: 9
+        }
+
+        cameraZoom = 1;
     }
 
     function setupCallbacks() {
@@ -26,41 +41,20 @@
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
-    function getCameraPosition() {
-        
-        return {
-            x: 0,
-            y: 0
-        }
-    }
-
-    function getCameraAspectRatio() {
-        
-        return {
-            width: 16,
-            height: 9
-        }
-    } 
-
-    function getCameraZoom() {
-
-        return 1;
-    }
-
     initialize();
 
     return Object.freeze({
 
         get cameraPosition() {
-            return getCameraPosition();
+            return cameraPosition;
         },
 
         get cameraAspectRatio() {
-            return getCameraAspectRatio();
+            return cameraAspectRatio;
         },
 
         get cameraZoom() {
-            return getCameraZoom();
+            return cameraZoom;
         }
     });
 })();
