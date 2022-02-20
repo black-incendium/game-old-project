@@ -5,7 +5,7 @@ import { gameManager } from './../managers/gameManager.js';
 import { gameQueueManager } from './../managers/gameQueueManager.js';
 import { mapManager } from './../managers/mapManager.js';
 import { resizeManager } from './../managers/resizeManager.js';
-import { userInputManager } from './../managers/resizeManager.js';
+import { userInputManager } from './../managers/userInputManager.js';
 import { testManager } from './testManager.js';
 
 let exposedManagers = {
