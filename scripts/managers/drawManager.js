@@ -26,6 +26,10 @@
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
+    function drawFrame() {
+        
+    }
+
     initialize();
 
     return Object.freeze({
