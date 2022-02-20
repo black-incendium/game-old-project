@@ -27,8 +27,6 @@ import { eventsManager } from './eventsManager.js';
         callbacks = {
             gameResized
         };
-
-        console.log(callbacks.gameResized)
     }
 
     function setupEventListeners() {
