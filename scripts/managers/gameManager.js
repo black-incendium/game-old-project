@@ -1,3 +1,8 @@
+import { userInputManager } from './userInputManager.js';
+import { testManager } from './testManager.js';
+import { resizeManager } from './resizeManager.js';
+import { drawManager } from './drawManager.js';
+
 /**
  * @fileoverview main manager object responsible for game flow
  * 
@@ -12,6 +17,8 @@
         
         setupCallbacks();
         setupEventListeners();
+
+        resizeManager.startGame();
     }
 
     function setupCallbacks() {
