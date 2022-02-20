@@ -33,16 +33,10 @@ import { drawManager } from './drawManager.js';
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
-    function createGlobalReference() {
-
-        window.gameManager = gameManager;
-    }
-
     initialize();
 
     return Object.freeze({
         
-        createGlobalReference
     });
 })();
 
