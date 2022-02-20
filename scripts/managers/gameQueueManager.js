@@ -1,12 +1,13 @@
 /**
- * @fileoverview 
+ * @fileoverview manager object that is responsible for handling game queue
  * 
  * @author black-incendium
  */
 
- let  = (() => {
+ let gameQueueManager = (() => {
 
     let callbacks = null;
+    let gameQueue = undefined; // ----------------todo--------------
 
     function initialize() {
         
@@ -33,4 +34,4 @@
     });
 })();
 
-export {  };
+export { gameQueueManager };

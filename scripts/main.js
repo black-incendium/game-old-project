@@ -1,4 +1,4 @@
-import { elements } from './elements.js';
-import { debug } from './debug/debug.js';
-import { userInputManager } from './managers/userInputManager.js';
-import { mapManager } from './managers/mapManager.js';
+import { gameManager } from "./managers/gameManager.js";
+import { exposedManagers } from "./development/exposedManagers.js";
+
+window.managers = exposedManagers;

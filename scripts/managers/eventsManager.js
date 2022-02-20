@@ -95,6 +95,7 @@ let eventsManager = (() => {
     return Object.freeze({
         fireEvent,
         createEventListener,
+        removeEventListener,
         createContext,
         createEvent
     });

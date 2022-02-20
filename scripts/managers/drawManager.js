@@ -1,10 +1,10 @@
 /**
- * @fileoverview 
+ * @fileoverview manager object responsible for managing frames drawing process
  * 
  * @author black-incendium
  */
 
- let  = (() => {
+ let drawManager = (() => {
 
     let callbacks = null;
 
@@ -26,11 +26,15 @@
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
+    function drawFrame() {
+        
+    }
+
     initialize();
 
     return Object.freeze({
-        
+        drawFrame
     });
 })();
 
-export {  };
+export { drawManager };

@@ -1,0 +1,5 @@
+let gameConfig = {
+    
+}
+
+export { gameConfig };

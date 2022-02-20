@@ -1,10 +1,15 @@
+import { userInputManager } from './userInputManager.js';
+import { testManager } from './../development/testManager.js';
+import { resizeManager } from './resizeManager.js';
+import { drawManager } from './drawManager.js';
+
 /**
- * @fileoverview 
+ * @fileoverview main manager object responsible for game flow
  * 
  * @author black-incendium
  */
 
- let  = (() => {
+ let gameManager = (() => {
 
     let callbacks = null;
 
@@ -12,6 +17,8 @@
         
         setupCallbacks();
         setupEventListeners();
+
+        resizeManager.startGame();
     }
 
     function setupCallbacks() {
@@ -33,4 +40,4 @@
     });
 })();
 
-export {  };
+export { gameManager };

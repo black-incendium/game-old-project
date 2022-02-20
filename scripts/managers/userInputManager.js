@@ -22,6 +22,7 @@ import { eventsManager } from './eventsManager.js';
         eventsManager.createContext('userInput');
         eventsManager.createEvent('userInput', 'click');
         eventsManager.createEvent('userInput', 'keydown');
+        eventsManager.createEvent('userInput', 'resize');
     }
 
     function setupDocumentEventListeners() {
@@ -32,6 +33,13 @@ import { eventsManager } from './eventsManager.js';
 
         document.addEventListener('keydown', e => {
             eventsManager.fireEvent('userInput', 'keydown', e);
+        });
+
+        window.addEventListener('resize', e => {
+            eventsManager.fireEvent('userInput', 'resize', {
+                width: e.target.innerWidth,
+                height: e.target.innerHeight
+            });
         });
     }
 
