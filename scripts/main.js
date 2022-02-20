@@ -5,4 +5,4 @@ import { mapManager } from './managers/mapManager.js';
 import { testManager } from './development/testManager.js';
 import { resizeManager } from './managers/resizeManager.js';
 
-resizeManager.gameStarted();
+resizeManager.startGame();

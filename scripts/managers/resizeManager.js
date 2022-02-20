@@ -10,11 +10,16 @@ import { eventsManager } from './eventsManager.js';
  let resizeManager = (() => {
 
     let callbacks = null;
+    let gameUpperLeftCorner = null;
 
     function initialize() {
         
         setupCallbacks();
         setupEventListeners();
+
+        gameUpperLeftCorner = {};
+
+        calculateUpperLeftCornerPosition()
     }
 
     function setupCallbacks() {
@@ -37,15 +42,24 @@ import { eventsManager } from './eventsManager.js';
         elements.canvas.height = height;
     }
 
-    function gameStarted() {
+    function startGame() {
         
         gameResized({width: elements.window.innerWidth, height: elements.window.innerHeight});
+    }
+
+    function calculateUpperLeftCornerPosition() {
+
+        // gameUpperLeftCorner.x = 
+        // gameUpperLeftCorner.y = 
     }
 
     initialize();
 
     return Object.freeze({
-        gameStarted
+        startGame,
+        get gameUpperLeftCorner() {
+            return gameUpperLeftCorner
+        }
     });
 })();
 
