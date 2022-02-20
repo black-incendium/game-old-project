@@ -34,4 +34,4 @@
     });
 })();
 
-export { gamkeQueueManager };
+export { gameQueueManager };
