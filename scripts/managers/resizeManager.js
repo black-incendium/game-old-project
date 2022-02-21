@@ -42,7 +42,7 @@ import { eventsManager } from './eventsManager.js';
 
     function startGame() {
         
-        gameResized({width: elements.window.innerWidth, height: elements.window.innerHeight});
+        gameResized({width: window.innerWidth, height: window.innerHeight});
     }
 
     function calculateUpperLeftCornerPosition() {
@@ -54,6 +54,7 @@ import { eventsManager } from './eventsManager.js';
     initialize();
 
     return Object.freeze({
+        
         startGame,
         get gameUpperLeftCorner() {
             return gameUpperLeftCorner

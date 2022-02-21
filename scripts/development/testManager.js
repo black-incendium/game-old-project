@@ -31,7 +31,7 @@ import { eventsManager } from './../managers/eventsManager.js'
     }
 
     function callback1(data) {
-        console.log(data)
+        
     }
 
     initialize();
