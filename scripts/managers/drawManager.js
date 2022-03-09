@@ -1,5 +1,6 @@
 import { elements } from '../elements.js';
 import { mapManager } from './mapManager.js';
+import { entitiesManager } from './entitiesManager.js';
 
 /**
  * @fileoverview manager object responsible for managing frames drawing process
@@ -34,6 +35,7 @@ import { mapManager } from './mapManager.js';
         elements.ctx.clearRect(0, 0, elements.canvas.width, elements.canvas.height)
 
         mapManager.drawMap();
+        entitiesManager.drawEntities();
 
         window.requestAnimationFrame(draw);
     }
