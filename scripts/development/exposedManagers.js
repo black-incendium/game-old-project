@@ -6,6 +6,8 @@ import { gameQueueManager } from './../managers/gameQueueManager.js';
 import { mapManager } from './../managers/mapManager.js';
 import { resizeManager } from './../managers/resizeManager.js';
 import { userInputManager } from './../managers/userInputManager.js';
+import { entitiesManager } from './../managers/entitiesManager.js';
+
 import { testManager } from './testManager.js';
 
 let exposedManagers = {
@@ -17,6 +19,8 @@ let exposedManagers = {
     mapManager,
     resizeManager,
     userInputManager,
+    entitiesManager,
+    
     testManager
 }
 
