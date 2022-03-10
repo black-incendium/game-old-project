@@ -1,10 +1,10 @@
 /**
- * @fileoverview 
+ * @fileoverview manager object responsible for handling (creating, saving, etc.) assets
  * 
  * @author black-incendium
  */
 
- let x = (() => {
+ let assetsManager = (() => {
 
     let callbacks = null;
 
@@ -33,4 +33,4 @@
     });
 })();
 
-export {  };
+export { assetsManager };

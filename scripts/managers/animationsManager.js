@@ -1,10 +1,10 @@
 /**
- * @fileoverview 
+ * @fileoverview manager object responsible for handling animations, both stationary and nonstationary
  * 
  * @author black-incendium
  */
 
- let x = (() => {
+ let animationsManager = (() => {
 
     let callbacks = null;
 
@@ -33,4 +33,4 @@
     });
 })();
 
-export {  };
+export { animationsManager };
