@@ -1,0 +1,19 @@
+{
+    "frames": [
+        {
+            "number": 0,
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 16
+        },
+
+        {
+            "number": 1,
+            "x": 16,
+            "y": 0,
+            "width": 16,
+            "height": 16
+        }
+    ]
+}
