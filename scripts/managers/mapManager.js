@@ -11,6 +11,7 @@ import { userInputManager } from './userInputManager.js';
 let mapManager = (()=>{
 
     let callbacks = null;
+    let actualMap = null;
 
     function initialize() {
 
@@ -27,6 +28,14 @@ let mapManager = (()=>{
 
     function setupEventListeners() {
 
+    }
+
+    function setMap(mapId) {
+
+    }
+
+    function drawTile() {
+        
     }
 
     function drawMap() {
