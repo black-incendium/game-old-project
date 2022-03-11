@@ -1,3 +1,5 @@
+import { assetsConfig } from './../configs/assetsConfig.js'
+
 /**
  * @fileoverview manager object responsible for handling (creating, saving, etc.) assets
  * 
@@ -12,6 +14,8 @@
         
         setupCallbacks();
         setupEventListeners();
+
+        createAssets();
     }
 
     function setupCallbacks() {
@@ -24,6 +28,15 @@
     function setupEventListeners() {
         
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
+    }
+
+    async function createAssets() {
+        console.log(assetsConfig);
+        assetsConfig.images.forEach(element => {
+            fetch(`./../../assets/${element.imagePath}`).then(response => {
+                console.log(response);
+            });
+        })
     }
 
     initialize();
