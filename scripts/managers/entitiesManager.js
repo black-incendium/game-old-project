@@ -1,4 +1,5 @@
 import { cameraManager } from './cameraManager.js';
+import { animationsManager } from './animationsManager.js';
 
 /**
  * @fileoverview manager object responsible for drawing and managing entities
@@ -34,6 +35,15 @@ import { cameraManager } from './cameraManager.js';
 
     function createEntity({}) {
 
+        let entity = {
+
+            setAnimation(animationName, fps) {
+
+                animationsManager.setupAnimation({entity, animationName, fps});
+            }
+        }
+
+        actors.push(entity)
     }
 
     function drawEntity(entity){
@@ -54,7 +64,8 @@ import { cameraManager } from './cameraManager.js';
 
     return Object.freeze({
         
-        drawEntities
+        drawEntities,
+        createEntity
     });
 })();
 

@@ -1,5 +1,6 @@
 import { debug } from "./../debug/debug.js";
-import { eventsManager } from './../managers/eventsManager.js'
+import { eventsManager } from './../managers/eventsManager.js';
+import { entitiesManager } from './../managers/entitiesManager.js';
 
 /**
  * @fileoverview test manager object that exist only to not pollute any other files while testing new functionalities during early stages of development
@@ -16,6 +17,8 @@ import { eventsManager } from './../managers/eventsManager.js'
         
         setupCallbacks();
         setupEventListeners();
+
+        // document.addEventListener('click', test)
     }
 
     function setupCallbacks() {
@@ -32,6 +35,13 @@ import { eventsManager } from './../managers/eventsManager.js'
 
     function callback1(data) {
         console.log(data);
+    }
+
+    function test(){
+
+        // entitiesManager.createEntity({ });
+        // entitiesManager.getActors()[0].setAnimation('player_idle', 2)
+        // console.log(entitiesManager.getActors())
     }
 
     initialize();
