@@ -1,6 +1,6 @@
 let assetsConfig = {
     imagesJsons: [
-        'player_idle.json'
+        'player_idle_assets.json'
     ]
 }
 

@@ -1,5 +1,6 @@
 import { debug } from './../debug/debug.js';
 import { assetsConfig } from './../configs/assetsConfig.js'
+import { eventsManager } from './eventsManager.js';
 
 /**
  * @fileoverview manager object responsible for handling (creating, saving, etc.) assets data
@@ -15,6 +16,7 @@ import { assetsConfig } from './../configs/assetsConfig.js'
     function initialize() {
         
         setupCallbacks();
+        setupEvents();
         setupEventListeners();
 
         createAssetsData();
@@ -27,15 +29,21 @@ import { assetsConfig } from './../configs/assetsConfig.js'
         };
     }
 
+    function setupEvents() {
+
+        eventsManager.createContext('assetsManager');
+        eventsManager.createEvent('assetsManager', 'assetsReady');
+    }
+
     function setupEventListeners() {
         
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
     async function createAssetsData() {
-        console.log(assetsConfig);
+
         assetsConfig.imagesJsons.forEach(jsonName => {
-            fetch(`./../../assets/jsons/${jsonName}`)
+            fetch(`./../../assets/imagesJsons/${jsonName}`)
             .then(response => response.json())
             .then(response => {
                 response.frames.forEach((frame, index) => {
@@ -54,15 +62,22 @@ import { assetsConfig } from './../configs/assetsConfig.js'
                     additionalFrameData.path = response.path;
 
                     assets[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
-                })
-            })
-        })
+                });
+                eventsManager.fireEvent('assetsManager', 'assetsReady');
+            });
+        });
+    }
+
+    function getAsset(assetName) {
+
+        return assets[assetName];
     }
 
     initialize();
 
     return Object.freeze({
-        
+
+        getAsset
     });
 })();
 
