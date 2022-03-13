@@ -1,3 +1,7 @@
+import { elements } from '../elements.js';
+import { mapManager } from './mapManager.js';
+import { entitiesManager } from './entitiesManager.js';
+
 /**
  * @fileoverview manager object responsible for managing frames drawing process
  * 
@@ -26,14 +30,21 @@
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
-    function drawFrame() {
-        
+    function draw() {
+
+        elements.ctx.clearRect(0, 0, elements.canvas.width, elements.canvas.height)
+
+        mapManager.drawMap();
+        entitiesManager.drawEntities();
+
+        window.requestAnimationFrame(draw);
     }
 
     initialize();
 
     return Object.freeze({
-        drawFrame
+
+        draw
     });
 })();
 

@@ -8,7 +8,10 @@ import { eventsManager } from './eventsManager.js';
 
  let userInputManager = (() => {
 
-    // gloabl variables declarations
+    let cursorPosition = {
+        x: -1000,
+        y: -1000
+    }
 
     function initialize() {
         
@@ -41,12 +44,20 @@ import { eventsManager } from './eventsManager.js';
                 height: e.target.innerHeight
             });
         });
+
+        document.addEventListener('mousemove', e => {
+            cursorPosition.x = e.x;
+            cursorPosition.y = e.y;
+        })
     }
 
     initialize();
 
     return Object.freeze({
         
+        get cursorPosition() {
+            return cursorPosition;
+        }
     });
 })();
 

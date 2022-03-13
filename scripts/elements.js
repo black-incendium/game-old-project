@@ -20,7 +20,7 @@ let elements = (()=>{
     initialize();
 
     return Object.freeze({
-        window,
+        
         canvas,
         ctx
     });
