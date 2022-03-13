@@ -62,18 +62,19 @@ import { assetsManager } from './assetsManager.js';
         })
     }
 
-    // function setupAnimation({entity, animationName, fps}) {
-    //     entity.animation = {
-    //         name: animationName,
-    //         fps,
-    //         animation
-    //     }
-    // }
+    function setupAnimation({entity, animationName, fps}) {
+        entity.animation = {
+            name: animationName,
+            fps,
+            currentFrame: 0
+        }
+    }
 
     initialize();
 
     return Object.freeze({
         
+        setupAnimation
     });
 })();
 
