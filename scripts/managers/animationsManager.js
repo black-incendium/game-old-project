@@ -11,7 +11,7 @@ import { assetsManager } from './assetsManager.js';
  let animationsManager = (() => {
 
     let callbacks = null;
-    let animations = {};
+    let animationsData = {};
 
     function initialize() {
         
@@ -45,13 +45,13 @@ import { assetsManager } from './assetsManager.js';
             .then(response => response.json())
             .then(response => {
 
-                animations[response.name] = {
+                animationsData[response.name] = {
                     fps: response.fps, 
                     frames: []
                 };
 
                 response.framesNames.forEach(frameName => {
-                    animations[response.name].frames.push(assetsManager.getAssetData(frameName));
+                    animationsData[response.name].frames.push(assetsManager.getAssetData(frameName));
                 });
 
                 eventsManager.fireEvent('animationsManager', 'animationsDataReady');

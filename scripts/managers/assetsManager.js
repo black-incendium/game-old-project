@@ -11,7 +11,7 @@ import { eventsManager } from './eventsManager.js';
  let assetsManager = (() => {
 
     let callbacks = null;
-    let assets = {};
+    let assetsData = {};
 
     function initialize() {
         
@@ -55,13 +55,13 @@ import { eventsManager } from './eventsManager.js';
                         optionalFrameName = response.prefix + index;
                     }
                     
-                    if (assets[optionalFrameName ?? frame.name] !== undefined) {
+                    if (assetsData[optionalFrameName ?? frame.name] !== undefined) {
                         debug.msg(`asset ${optionalFrameName ?? frame.name} already exists`);
                     }
 
                     additionalFrameData.path = response.path;
 
-                    assets[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
+                    assetsData[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
                 });
                 eventsManager.fireEvent('assetsManager', 'assetsDataReady');
             });
@@ -70,7 +70,7 @@ import { eventsManager } from './eventsManager.js';
 
     function getAssetData(assetName) {
 
-        return assets[assetName];
+        return assetsData[assetName];
     }
 
     initialize();
