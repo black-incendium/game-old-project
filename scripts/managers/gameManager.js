@@ -19,6 +19,8 @@ import { drawManager } from './drawManager.js';
         setupEventListeners();
 
         resizeManager.startGame();
+
+        drawManager.draw();
     }
 
     function setupCallbacks() {
