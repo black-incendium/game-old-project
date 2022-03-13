@@ -12,12 +12,15 @@ import { assetsManager } from './assetsManager.js';
 
     let callbacks = null;
     let animationsData = {};
+    // let gameStartTime = null;
 
     function initialize() {
         
         setupCallbacks();
         setupEvents();
         setupEventListeners();
+
+        // gameStartTime = (new Date()).getTime();
     }
 
     function setupCallbacks() {
@@ -58,6 +61,14 @@ import { assetsManager } from './assetsManager.js';
             });
         })
     }
+
+    // function setupAnimation({entity, animationName, fps}) {
+    //     entity.animation = {
+    //         name: animationName,
+    //         fps,
+    //         animation
+    //     }
+    // }
 
     initialize();
 
