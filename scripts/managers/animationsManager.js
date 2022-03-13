@@ -1,5 +1,6 @@
 import { animationsConfig } from '../configs/animationsConfig.js';
 import { eventsManager } from './eventsManager.js';
+import { assetsManager } from './assetsManager.js';
 
 /**
  * @fileoverview manager object responsible for handling animations, both stationary and nonstationary
@@ -10,10 +11,12 @@ import { eventsManager } from './eventsManager.js';
  let animationsManager = (() => {
 
     let callbacks = null;
+    let animations = {};
 
     function initialize() {
         
         setupCallbacks();
+        setupEvents();
         setupEventListeners();
     }
 
@@ -24,9 +27,15 @@ import { eventsManager } from './eventsManager.js';
         };
     }
 
+    function setupEvents() {
+
+        eventsManager.createContext('animationsManager');
+        eventsManager.createEvent('animationsManager', 'animationsDataReady');
+    }
+
     function setupEventListeners() {
         
-        eventsManager.createEventListener('assetsManager', 'assetsReady', callbacks.assetsReadyCallback);
+        eventsManager.createEventListener('assetsManager', 'assetsDataReady', callbacks.assetsReadyCallback);
     }
 
     function createAnimationsData() {
@@ -35,7 +44,17 @@ import { eventsManager } from './eventsManager.js';
             fetch(`./../../assets/animationsJsons/${jsonName}`)
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+
+                animations[response.name] = {
+                    fps: response.fps, 
+                    frames: []
+                };
+
+                response.framesNames.forEach(frameName => {
+                    animations[response.name].frames.push(assetsManager.getAssetData(frameName));
+                });
+
+                eventsManager.fireEvent('animationsManager', 'animationsDataReady');
             });
         })
     }

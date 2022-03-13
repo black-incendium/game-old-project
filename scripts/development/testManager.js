@@ -27,11 +27,11 @@ import { eventsManager } from './../managers/eventsManager.js'
 
     function setupEventListeners() {
         
-        // eventsManager.createEventListener('userInput', 'keydown', callbacks.callback1);
+        // eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.callback1);
     }
 
     function callback1(data) {
-        
+        console.log(data);
     }
 
     initialize();
