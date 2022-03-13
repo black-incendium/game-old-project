@@ -32,7 +32,7 @@ import { eventsManager } from './eventsManager.js';
     function setupEvents() {
 
         eventsManager.createContext('assetsManager');
-        eventsManager.createEvent('assetsManager', 'assetsReady');
+        eventsManager.createEvent('assetsManager', 'assetsDataReady');
     }
 
     function setupEventListeners() {
@@ -63,12 +63,12 @@ import { eventsManager } from './eventsManager.js';
 
                     assets[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
                 });
-                eventsManager.fireEvent('assetsManager', 'assetsReady');
+                eventsManager.fireEvent('assetsManager', 'assetsDataReady');
             });
         });
     }
 
-    function getAsset(assetName) {
+    function getAssetData(assetName) {
 
         return assets[assetName];
     }
@@ -77,7 +77,7 @@ import { eventsManager } from './eventsManager.js';
 
     return Object.freeze({
 
-        getAsset
+        getAssetData
     });
 })();
 
