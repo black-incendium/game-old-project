@@ -1,7 +1,7 @@
 {
     "name": "player_idle",
     "fps": 2,
-    "frames": [
+    "framesNames": [
         "player_idle_0",
         "player_idle_1"
     ]
