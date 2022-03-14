@@ -42,30 +42,27 @@ import { eventsManager } from './eventsManager.js';
 
     async function createAssetsData() {
 
-        assetsConfig.imagesJsons.forEach(jsonName => {
-            fetch(`./../../assets/imagesJsons/${jsonName}`)
-            .then(response => response.json())
-            .then(response => {
-                response.frames.forEach((frame, index) => {
+        await Promise.all(assetsConfig.imagesJsons.map(async jsonName => {
+            let response = await fetch(`./../../assets/imagesJsons/${jsonName}`);
+            response = await response.json();
+            response.frames.forEach((frame, index) => {
 
-                    let optionalFrameName;
-                    let additionalFrameData = {};
+                let optionalFrameName;
+                let additionalFrameData = {};
 
-                    if (response.prefix) {
-                        optionalFrameName = response.prefix + index;
-                    }
+                if (response.prefix) {
+                    optionalFrameName = response.prefix + index;
+                }
                     
-                    if (assetsData[optionalFrameName ?? frame.name] !== undefined) {
-                        debug.msg(`asset ${optionalFrameName ?? frame.name} already exists`);
-                    }
+                if (assetsData[optionalFrameName ?? frame.name] !== undefined) {
+                    debug.msg(`asset ${optionalFrameName ?? frame.name} already exists`);
+                }
 
-                    additionalFrameData.path = response.path;
-
-                    assetsData[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
-                });
-                eventsManager.fireEvent('assetsManager', 'assetsDataReady');
+                additionalFrameData.path = response.path;
+                assetsData[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
             });
-        });
+        }));
+        eventsManager.fireEvent('assetsManager', 'assetsDataReady');
     }
 
     function getAssetData(assetName) {

@@ -2,6 +2,7 @@ import { eventsManager } from './eventsManager.js';
 import { elements } from './../elements.js';
 import { userInputManager } from './userInputManager.js';
 import { cameraManager } from './cameraManager.js';
+import { mapConfig } from './../configs/mapConfig.js';
 
 /**
  * @fileoverview manager object responsible for handling map data and drawing map
@@ -12,12 +13,16 @@ import { cameraManager } from './cameraManager.js';
 let mapManager = (()=>{
 
     let callbacks = null;
-    let actualMap = null;
+    let actualMapId = "";
+    let maps = {}
 
     function initialize() {
 
         setupCallbacks();
+        setupEvents();
         setupEventListeners();
+
+        createMapData();
     }
 
     function setupCallbacks() {
@@ -27,15 +32,21 @@ let mapManager = (()=>{
         };
     }
 
+    function setupEvents() {
+
+        eventsManager.createContext('mapManager');
+        eventsManager.createEvent('mapManager', 'mapsDataReady');
+    }
+
     function setupEventListeners() {
 
     }
 
     function setMap(mapId) {
-
+        
     }
 
-    function drawTile() {
+    function drawTile(x, y) {
         
     }
 
@@ -50,6 +61,24 @@ let mapManager = (()=>{
             )
         elements.ctx.fillStyle = "red";
         elements.ctx.fillRect(userInputManager.cursorPosition.x-5, userInputManager.cursorPosition.y-5, 10, 10)
+    }
+
+    async function createMapData() {
+
+        await Promise.all(mapConfig.mapsJsons.map(async jsonName => {
+
+            let response = await fetch(`./../../assets/mapsJsons/${jsonName}`)
+            response = await response.json();
+
+            console.log(response);
+
+            maps[response.name] = {};
+            maps[response.name].tilesetPrefix = response.tilesetPrefix;
+            maps[response.name].tiles = response.tiles;
+            maps[response.name].entities = response.entities;
+
+        }));     
+        eventsManager.fireEvent('mapManager', 'mapsDataReady');
     }
 
     initialize();
