@@ -1,6 +1,6 @@
 {
-    "path": "images/basic_tilemap.png",
-    "prefix": "basic_tilemap_",
+    "path": "images/basic_tileset.png",
+    "prefix": "basic_tileset_",
     "frames": [
         {
             "x": 0,
