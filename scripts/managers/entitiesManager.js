@@ -1,5 +1,6 @@
 import { cameraManager } from './cameraManager.js';
 import { animationsManager } from './animationsManager.js';
+import { entitiesManager } from './../configs/entitiesConfig.js';
 
 /**
  * @fileoverview manager object responsible for drawing and managing entities
@@ -19,6 +20,8 @@ import { animationsManager } from './animationsManager.js';
         
         setupCallbacks();
         setupEventListeners();
+
+        createEntitiesData();
     }
 
     function setupCallbacks() {
@@ -58,6 +61,12 @@ import { animationsManager } from './animationsManager.js';
         items.forEach(drawEntity);
         actors.forEach(drawEntity);
         drawEntity(player);
+    }
+
+    async function createEntitiesData() {
+
+        await Promise.all(entitiesConfig);
+
     }
 
     initialize();
