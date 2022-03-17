@@ -32,6 +32,7 @@ let eventsManager = (() => {
                 listener.callback(data);
             }
         });
+        // debug.print(`event: ${event}`)
     }
 
     function createEventListener(context, event, callback) {

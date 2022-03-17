@@ -13,6 +13,7 @@ import { eventsManager } from './eventsManager.js'
  let gameManager = (() => {
 
     let callbacks = null;
+    let dataReadyEvents = 0;
 
     function initialize() {
         
@@ -26,13 +27,24 @@ import { eventsManager } from './eventsManager.js'
     function setupCallbacks() {
 
         callbacks = {
-            assetsDataReadyCallback: startDrawing
+            someTypeOfDataReadyCallback: countAsynchronousEvents
         };
     }
 
     function setupEventListeners() {
         
-        eventsManager.createEventListener('assetsManager', 'assetsDataReady', callbacks.assetsDataReadyCallback);
+        eventsManager.createEventListener('assetsManager', 'assetsDataReady', callbacks.someTypeOfDataReadyCallback);
+        eventsManager.createEventListener('mapManager', 'mapsDataReady', callbacks.someTypeOfDataReadyCallback);
+        eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.someTypeOfDataReadyCallback);
+        // eventsManager.createEventListener('entitiesManager', 'entitiesDataReady', callbacks.someTypeOfDataReadyCallback);
+    }
+
+    function countAsynchronousEvents() {
+
+        dataReadyEvents++;
+        if (dataReadyEvents == 3) {
+            startDrawing();
+        }
     }
 
     function startDrawing() {
