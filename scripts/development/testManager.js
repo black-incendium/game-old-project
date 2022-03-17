@@ -1,6 +1,7 @@
 import { debug } from "./../debug/debug.js";
 import { eventsManager } from './../managers/eventsManager.js';
 import { entitiesManager } from './../managers/entitiesManager.js';
+import { assetsManager } from "../managers/assetsManager.js";
 
 /**
  * @fileoverview test manager object that exist only to not pollute any other files while testing new functionalities during early stages of development
@@ -30,11 +31,12 @@ import { entitiesManager } from './../managers/entitiesManager.js';
 
     function setupEventListeners() {
         
-        // eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.callback1);
+        eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.callback1);
     }
 
     function callback1(data) {
-        console.log(data);
+        
+        assetsManager.drawAsset('player_idle_0',0,0,100,100);
     }
 
     function test(){

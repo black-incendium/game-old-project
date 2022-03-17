@@ -3,6 +3,7 @@ import { elements } from './../elements.js';
 import { userInputManager } from './userInputManager.js';
 import { cameraManager } from './cameraManager.js';
 import { mapConfig } from './../configs/mapConfig.js';
+import { assetsManager } from './assetsManager.js';
 
 /**
  * @fileoverview manager object responsible for handling map data and drawing map
@@ -44,10 +45,12 @@ let mapManager = (()=>{
 
     function setMap(mapId) {
         
+        
     }
 
     function drawTile(x, y) {
         
+        let tileId = maps[actualMapId].mapData[x][y]
     }
 
     function drawMap() {
@@ -61,6 +64,7 @@ let mapManager = (()=>{
             )
         elements.ctx.fillStyle = "red";
         elements.ctx.fillRect(userInputManager.cursorPosition.x-5, userInputManager.cursorPosition.y-5, 10, 10)
+        assetsManager.drawAsset('player_idle_0',0,0,100,100)
     }
 
     async function createMapData() {
