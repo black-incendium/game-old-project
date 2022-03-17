@@ -1,6 +1,6 @@
 import { cameraManager } from './cameraManager.js';
 import { animationsManager } from './animationsManager.js';
-import { entitiesManager } from './../configs/entitiesConfig.js';
+import { entitiesConfig } from './../configs/entitiesConfig.js';
 
 /**
  * @fileoverview manager object responsible for drawing and managing entities
@@ -65,7 +65,7 @@ import { entitiesManager } from './../configs/entitiesConfig.js';
 
     async function createEntitiesData() {
 
-        await Promise.all(entitiesConfig);
+       // await Promise.all(entitiesConfig);
 
     }
 
