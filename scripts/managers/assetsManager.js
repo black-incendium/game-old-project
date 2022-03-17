@@ -1,6 +1,8 @@
 import { debug } from './../debug/debug.js';
 import { assetsConfig } from './../configs/assetsConfig.js'
 import { eventsManager } from './eventsManager.js';
+import { cameraManager } from './cameraManager.js';
+import { elements } from './../elements.js'
 
 /**
  * @fileoverview manager object responsible for handling (creating, saving, etc.) assets data
@@ -12,6 +14,7 @@ import { eventsManager } from './eventsManager.js';
 
     let callbacks = null;
     let assetsData = {};
+    let graphics = {};
 
     function initialize() {
         
@@ -19,6 +22,7 @@ import { eventsManager } from './eventsManager.js';
         setupEvents();
         setupEventListeners();
 
+        createGraphics();
         createAssetsData();
     }
 
@@ -58,11 +62,20 @@ import { eventsManager } from './eventsManager.js';
                     debug.msg(`asset ${optionalFrameName ?? frame.name} already exists`);
                 }
 
-                additionalFrameData.path = response.path;
+                additionalFrameData.graphicsId = response.graphicsId;
                 assetsData[optionalFrameName ?? frame.name] = {...frame, ...additionalFrameData}
             });
         }));
         eventsManager.fireEvent('assetsManager', 'assetsDataReady');
+    }
+
+    function createGraphics() {
+
+        Object.getOwnPropertyNames(assetsConfig.images).forEach(property => {
+
+            graphics[property] = new Image();
+            graphics[property].src = `./assets/images/${assetsConfig.images[property]}`;
+        });
     }
 
     function getAssetData(assetName) {
@@ -70,11 +83,27 @@ import { eventsManager } from './eventsManager.js';
         return assetsData[assetName];
     }
 
+    function drawAsset(assetId, x, y, width, height) {
+
+        elements.ctx.drawImage(
+            graphics[assetsData[assetId].graphicsId],
+            assetsData[assetId].x,
+            assetsData[assetId].y,
+            assetsData[assetId].width,
+            assetsData[assetId].height,
+            x + cameraManager.upperLeftCornerPosition.x,
+            y + cameraManager.upperLeftCornerPosition.y,
+            width,
+            height
+            );
+    }
+
     initialize();
 
     return Object.freeze({
 
-        getAssetData
+        getAssetData,
+        drawAsset
     });
 })();
 
