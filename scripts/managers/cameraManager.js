@@ -87,6 +87,10 @@ import { eventsManager } from './eventsManager.js';
 
         isInTheView,
 
+        get tileSize() {
+            return gameSize.width / cameraAspectRatio.width
+        },
+
         get cameraPosition() {
             return cameraPosition;
         },
