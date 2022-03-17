@@ -1,3 +1,4 @@
+import { elements } from '../elements.js';
 import { debug } from './../debug/debug.js';
 import { eventsManager } from './eventsManager.js';
 
@@ -74,7 +75,10 @@ import { eventsManager } from './eventsManager.js';
 
     function windowResized() {
 
-        calcUpperLeftCornerPosition()
+        elements.canvas.width = window.innerWidth;
+        elements.canvas.height = window.innerHeight;
+        elements.ctx.imageSmoothingEnabled = false;
+        calcUpperLeftCornerPosition();
     }
 
     initialize();

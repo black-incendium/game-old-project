@@ -31,8 +31,8 @@ import { eventsManager } from './eventsManager.js';
 
     function gameResized({width, height}) {
 
-        elements.canvas.width = width;
-        elements.canvas.height = height;
+        // elements.canvas.width = width;
+        // elements.canvas.height = height;
     }
 
     function startGame() {
