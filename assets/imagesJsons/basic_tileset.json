@@ -1,5 +1,5 @@
 {
-    "path": "images/basic_tileset.png",
+    "graphicsId": "basicTilemap",
     "prefix": "basic_tileset_",
     "frames": [
         {
