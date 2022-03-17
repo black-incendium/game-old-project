@@ -78,7 +78,7 @@ let mapManager = (()=>{
 
             maps[response.name] = {};
             maps[response.name].tilesetPrefix = response.tilesetPrefix;
-            maps[response.name].tiles = response.tiles;
+            maps[response.name].data = response.data;
             maps[response.name].entities = response.entities;
 
         }));     
