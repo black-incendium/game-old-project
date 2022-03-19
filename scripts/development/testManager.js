@@ -31,12 +31,12 @@ import { assetsManager } from "../managers/assetsManager.js";
 
     function setupEventListeners() {
         
-        eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.callback1);
+        // eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.callback1);
     }
 
     function callback1(data) {
         
-        assetsManager.drawAsset('player_idle_0',0,0,100,100);
+        // assetsManager.drawAsset('player_idle_0',0,0,100,100);
     }
 
     function test(){

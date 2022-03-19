@@ -13,8 +13,6 @@ import { eventsManager } from './eventsManager.js';
     let callbacks = null;
     let cameraPosition = null;
     let cameraAspectRatio = null
-    let upperLeftCornerPosition = {};
-    let gameSize = {};
     let cameraZoom = 0;
 
     function initialize() {
@@ -23,9 +21,7 @@ import { eventsManager } from './eventsManager.js';
         setupEventListeners();
 
         cameraPosition = {x: 0, y: 0}
-        cameraAspectRatio = {width: 16, height: 9}
-
-        windowResized();
+        cameraAspectRatio = {width: 3, height: 3}
 
         cameraZoom = 1;
     }
@@ -33,63 +29,27 @@ import { eventsManager } from './eventsManager.js';
     function setupCallbacks() {
 
         callbacks = {
-            resizeCallback: windowResized
+            
         };
     }
 
     function setupEventListeners() {
         
-        eventsManager.createEventListener('userInput', 'resize', callbacks.resizeCallback);
+        // eventsManager.createEventListener('userInput', 'resize', callbacks.resizeCallback);
     }
 
-    function isInTheView({x, y}) {
-
-        if (x < Math.floor(cameraPosition.x)) return false;
-        if (x > Math.ceil(cameraPosition.x + cameraAspectRatio.width * 1 / cameraZoom)) return false;
-        if (y < Math.floor(cameraPosition.y)) return false;
-        if (y > Math.ceil(cameraPosition.y + cameraAspectRatio.height * 1 / cameraZoom)) return false;
-
-        return true;
-    }
-
-    function calcUpperLeftCornerPosition() {
-
-        calcGameSize();
-
-        upperLeftCornerPosition.x = (window.innerWidth - gameSize.width)/2;
-        upperLeftCornerPosition.y = (window.innerHeight - gameSize.height)/2;
-    }
-
-    function calcGameSize() {
-
-        if (window.innerWidth/window.innerHeight > cameraAspectRatio.width/cameraAspectRatio.height) {
-
-            gameSize.width = window.innerHeight/cameraAspectRatio.height*cameraAspectRatio.width;
-            gameSize.height = window.innerHeight
-        } else {
-
-            gameSize.width = window.innerWidth;
-            gameSize.height = window.innerWidth/cameraAspectRatio.width*cameraAspectRatio.height
+    function setCameraPosition(x, y) {
+        cameraPosition = {
+            x,
+            y
         }
-    }
-
-    function windowResized() {
-
-        elements.canvas.width = window.innerWidth;
-        elements.canvas.height = window.innerHeight;
-        elements.ctx.imageSmoothingEnabled = false;
-        calcUpperLeftCornerPosition();
     }
 
     initialize();
 
     return Object.freeze({
 
-        isInTheView,
-
-        get tileSize() {
-            return gameSize.width / cameraAspectRatio.width
-        },
+        setCameraPosition,
 
         get cameraPosition() {
             return cameraPosition;
@@ -103,12 +63,13 @@ import { eventsManager } from './eventsManager.js';
             return cameraZoom;
         },
 
-        get upperLeftCornerPosition() {
-            return upperLeftCornerPosition;
-        },
         get gameSize() {
-            return gameSize;
+            return {
+                width: cameraAspectRatio.width/cameraZoom,
+                height: cameraAspectRatio.height/cameraZoom
+            }
         }
+
     });
 })();
 

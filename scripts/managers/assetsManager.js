@@ -3,6 +3,7 @@ import { assetsConfig } from './../configs/assetsConfig.js'
 import { eventsManager } from './eventsManager.js';
 import { cameraManager } from './cameraManager.js';
 import { elements } from './../elements.js'
+import { resizeManager } from './resizeManager.js';
 
 /**
  * @fileoverview manager object responsible for handling (creating, saving, etc.) assets data
@@ -84,6 +85,8 @@ import { elements } from './../elements.js'
     }
 
     function drawAsset(assetId, x, y, width, height) {
+        
+        let tileSize = resizeManager.gameSize.width/cameraManager.cameraAspectRatio.width;
 
         elements.ctx.drawImage(
             graphics[assetsData[assetId].graphicsId],
@@ -91,11 +94,11 @@ import { elements } from './../elements.js'
             assetsData[assetId].y,
             assetsData[assetId].width,
             assetsData[assetId].height,
-            x + cameraManager.upperLeftCornerPosition.x,
-            y + cameraManager.upperLeftCornerPosition.y,
-            width,
-            height
-            );
+            x * tileSize,
+            y * tileSize,
+            width * tileSize,
+            height * tileSize
+        );
     }
 
     initialize();

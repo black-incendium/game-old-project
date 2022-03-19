@@ -1,4 +1,5 @@
 import { eventsManager } from './eventsManager.js';
+import { resizeManager } from './resizeManager.js';
 
 /**
  * @fileoverview manager object responsible for handling user input; firing appropriate events
@@ -46,8 +47,8 @@ import { eventsManager } from './eventsManager.js';
         });
 
         document.addEventListener('mousemove', e => {
-            cursorPosition.x = e.x;
-            cursorPosition.y = e.y;
+            cursorPosition.x = e.x - resizeManager.canvasPosition.x;
+            cursorPosition.y = e.y - resizeManager.canvasPosition.y;
         })
     }
 

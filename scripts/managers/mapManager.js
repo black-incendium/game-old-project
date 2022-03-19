@@ -4,6 +4,7 @@ import { userInputManager } from './userInputManager.js';
 import { cameraManager } from './cameraManager.js';
 import { mapConfig } from './../configs/mapConfig.js';
 import { assetsManager } from './assetsManager.js';
+import { resizeManager } from './resizeManager.js';
 
 /**
  * @fileoverview manager object responsible for handling map data and drawing map
@@ -52,18 +53,22 @@ let mapManager = (()=>{
         
         let tileId = maps[currentMapId].data[x][y];
         let assetId = maps[currentMapId].tilesetPrefix + tileId;
-        let tileX = Math.floor((x - cameraManager.cameraPosition.x) * cameraManager.tileSize);
-        let tileY = Math.floor((y - cameraManager.cameraPosition.y) * cameraManager.tileSize);
-        let nextTileX = Math.floor((x - cameraManager.cameraPosition.x + 1) * cameraManager.tileSize);
-        let netxTileY = Math.floor((y - cameraManager.cameraPosition.y + 1) * cameraManager.tileSize);
+        let tileX = x - cameraManager.cameraPosition.x;
+        let tileY = y - cameraManager.cameraPosition.y;
+        // let nextTileX = Math.floor(x - cameraManager.cameraPosition.x + 1) * cameraManager.tileSize);
+        // let netxTileY = Math.floor((y - cameraManager.cameraPosition.y + 1) * cameraManager.tileSize);
 
+
+        // debugger
         assetsManager.drawAsset(
-                assetId, 
-                tileX,
-                tileY,
-                nextTileX - tileX,
-                netxTileY - tileY
-            );
+            assetId, 
+            tileX,
+            tileY,
+            1,
+            1
+        );
+
+        
     }
 
     function drawMap() {
@@ -72,21 +77,22 @@ let mapManager = (()=>{
 
         elements.ctx.fillStyle = "#222266";
         elements.ctx.fillRect(
-            cameraManager.upperLeftCornerPosition.x, 
-            cameraManager.upperLeftCornerPosition.y, 
-            cameraManager.gameSize.width,
-            cameraManager.gameSize.height
+            0, 
+            0, 
+            resizeManager.gameSize.width,
+            resizeManager.gameSize.height
             )
         elements.ctx.fillStyle = "red";
         elements.ctx.fillRect(userInputManager.cursorPosition.x-5, userInputManager.cursorPosition.y-5, 10, 10)
         // assetsManager.drawAsset('player_idle_0',0,0,100,100)
         drawTile(0,0)
-        drawTile(0,1)
-        drawTile(1,0)
-        drawTile(2,0)
+        // drawTile(0,1)
+        // drawTile(1,0)
+        // drawTile(2,0)
         drawTile(1,1)
-        drawTile(3,0)
-        drawTile(4,0)
+        // drawTile(3,0)
+        // drawTile(4,0);
+        // debugger;
     }
 
     async function createMapData() {
@@ -105,11 +111,26 @@ let mapManager = (()=>{
         eventsManager.fireEvent('mapManager', 'mapsDataReady');
     }
 
+    function getTilesInViewBoundaries() {
+
+        return {
+            min: {
+                x: Math.floor(cameraManager.cameraPosition.x),
+                y: Math.floor(cameraManager.cameraPosition.y)
+            },
+            max: {
+                x: Math.floor(cameraManager.cameraPosition.x + cameraManager.gameSize.width) + (cameraManager.cameraPosition.x % 1 == 0 ? -1 : 0),
+                y: Math.floor(cameraManager.cameraPosition.y + cameraManager.gameSize.height) + (cameraManager.cameraPosition.y % 1 == 0 ? -1 : 0)
+            }
+        }
+    }
+
     initialize();
 
     return Object.freeze({
 
-        drawMap
+        drawMap,
+        getTilesInViewBoundaries
     });
 })();
 
