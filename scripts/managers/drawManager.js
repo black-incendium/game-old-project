@@ -35,7 +35,7 @@ import { entitiesManager } from './entitiesManager.js';
         elements.ctx.clearRect(0, 0, elements.canvas.width, elements.canvas.height)
 
         mapManager.drawMap();
-        entitiesManager.drawEntities();
+        // entitiesManager.drawEntities();
 
         window.requestAnimationFrame(draw);
     }
