@@ -20,28 +20,15 @@ let mapManager = (()=>{
 
     function initialize() {
 
-        setupCallbacks();
         setupEvents();
-        setupEventListeners();
 
         createMapData();
-    }
-
-    function setupCallbacks() {
-
-        callbacks = {
-            
-        };
     }
 
     function setupEvents() {
 
         eventsManager.createContext('mapManager');
         eventsManager.createEvent('mapManager', 'mapsDataReady');
-    }
-
-    function setupEventListeners() {
-
     }
 
     function setMap(mapId) {
@@ -95,6 +82,12 @@ let mapManager = (()=>{
         // debugger;
     }
 
+    function renderMap(x, y, width, height) {
+
+        elements.ctx.fillStyle = "aqua";
+        elements.ctx.fillRect(x,y,width,height);
+    }
+
     async function createMapData() {
 
         await Promise.all(mapConfig.mapsJsons.map(async jsonName => {
@@ -128,8 +121,7 @@ let mapManager = (()=>{
     return Object.freeze({
 
         initialize,
-        drawMap,
-        getTilesInViewBoundaries
+        renderMap
     });
 })();
 

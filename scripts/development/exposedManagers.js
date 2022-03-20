@@ -9,6 +9,7 @@ import { userInputManager } from './../managers/userInputManager.js';
 import { entitiesManager } from './../managers/entitiesManager.js';
 import { assetsManager } from './../managers/assetsManager.js';
 import { animationsManager } from './../managers/animationsManager.js';
+import { componentsManager } from '../managers/componentsManager.js';
 
 import { testManager } from './testManager.js';
 
@@ -24,6 +25,7 @@ let exposedManagers = {
     entitiesManager,
     assetsManager,
     animationsManager,
+    componentsManager,
     
     testManager
 }

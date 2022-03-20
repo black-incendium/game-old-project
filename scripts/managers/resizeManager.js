@@ -26,12 +26,14 @@ import { eventsManager } from './eventsManager.js';
         
         setupCallbacks();
         setupEventListeners();
+
+        resizeCanvas();
     }
 
     function setupCallbacks() {
 
         callbacks = {
-            gameResized
+            gameResized: resizeCanvas
         };
     }
 
@@ -46,7 +48,7 @@ import { eventsManager } from './eventsManager.js';
     //     // elements.canvas.height = height;
     // }
 
-    function gameResized() {
+    function resizeCanvas() {
 
         if (window.innerWidth/window.innerHeight > gameAspectRatio.width/gameAspectRatio.height) {
             
@@ -68,15 +70,9 @@ import { eventsManager } from './eventsManager.js';
 
     }
 
-    function startGame() {
-        
-        gameResized();
-    }
-
     return Object.freeze({
         
         initialize,
-        startGame,
 
         get gameSize() {
             return gameSize;

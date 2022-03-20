@@ -1,6 +1,6 @@
 debug -> error(msg)
-cameraManager -> isInTheView() -> arguments validation
 
-how is gonna animationManager(?) work? 
+create jsdoc description of every exposed function
+
 
 fajne efekty z otwiraniem devtoolsów-> https://brianiscreative.itch.io/fara
