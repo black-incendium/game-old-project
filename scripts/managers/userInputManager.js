@@ -52,9 +52,9 @@ import { resizeManager } from './resizeManager.js';
         })
     }
 
-    initialize();
-
     return Object.freeze({
+
+        initialize,
         
         get cursorPosition() {
             return cursorPosition;

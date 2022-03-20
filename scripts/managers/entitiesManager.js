@@ -69,10 +69,9 @@ import { entitiesConfig } from './../configs/entitiesConfig.js';
 
     }
 
-    initialize();
-
     return Object.freeze({
         
+        initialize,
         drawEntities,
         createEntity
     });

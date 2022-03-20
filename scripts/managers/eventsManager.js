@@ -91,9 +91,9 @@ let eventsManager = (() => {
         contexts[context][eventName] = true;
     }
 
-    initialize();
-
     return Object.freeze({
+
+        initialize,
         fireEvent,
         createEventListener,
         removeEventListener,

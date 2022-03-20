@@ -27,10 +27,9 @@
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
-    initialize();
-
     return Object.freeze({
         
+        initialize,
     });
 })();
 

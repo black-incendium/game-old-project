@@ -11,9 +11,10 @@ import { eventsManager } from './eventsManager.js';
  let resizeManager = (() => {
 
     let callbacks = null;
-    let gameSize = {
-        width: 600,
-        height: 150
+    let gameSize = {};
+    let gameAspectRatio = {
+        width: 4,
+        height: 3
     }
 
     let canvasPosition = {
@@ -47,14 +48,14 @@ import { eventsManager } from './eventsManager.js';
 
     function gameResized() {
 
-        if (window.innerWidth/window.innerHeight > cameraManager.cameraAspectRatio.width/cameraManager.cameraAspectRatio.height) {
+        if (window.innerWidth/window.innerHeight > gameAspectRatio.width/gameAspectRatio.height) {
             
-            gameSize.width = window.innerHeight/cameraManager.cameraAspectRatio.height*cameraManager.cameraAspectRatio.width;
+            gameSize.width = window.innerHeight/gameAspectRatio.height*gameAspectRatio.width;
             gameSize.height = window.innerHeight
         } else {
             
             gameSize.width = window.innerWidth;
-            gameSize.height = window.innerWidth/cameraManager.cameraAspectRatio.width*cameraManager.cameraAspectRatio.height
+            gameSize.height = window.innerWidth/gameAspectRatio.width*gameAspectRatio.height
         }
 
         elements.canvas.width = gameSize.width;
@@ -72,10 +73,9 @@ import { eventsManager } from './eventsManager.js';
         gameResized();
     }
 
-    initialize();
-
     return Object.freeze({
         
+        initialize,
         startGame,
 
         get gameSize() {

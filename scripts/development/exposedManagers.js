@@ -1,5 +1,5 @@
 import { cameraManager } from './../managers/cameraManager.js';
-import { drawManager } from './../managers/drawManager.js';
+import { renderManager } from './../managers/renderManager.js';
 import { eventsManager } from './../managers/eventsManager.js';
 import { gameManager } from './../managers/gameManager.js';
 import { gameQueueManager } from './../managers/gameQueueManager.js';
@@ -14,7 +14,7 @@ import { testManager } from './testManager.js';
 
 let exposedManagers = {
     cameraManager,
-    drawManager,
+    renderManager,
     eventsManager,
     gameManager,
     gameQueueManager,

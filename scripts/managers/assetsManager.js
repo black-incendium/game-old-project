@@ -101,10 +101,9 @@ import { resizeManager } from './resizeManager.js';
         );
     }
 
-    initialize();
-
     return Object.freeze({
 
+        initialize,
         getAssetData,
         drawAsset
     });

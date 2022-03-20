@@ -45,10 +45,9 @@ import { eventsManager } from './eventsManager.js';
         }
     }
 
-    initialize();
-
     return Object.freeze({
 
+        initialize,
         setCameraPosition,
 
         get cameraPosition() {
@@ -63,7 +62,7 @@ import { eventsManager } from './eventsManager.js';
             return cameraZoom;
         },
 
-        get gameSize() {
+        get cameraViewSize() {
             return {
                 width: cameraAspectRatio.width/cameraZoom,
                 height: cameraAspectRatio.height/cameraZoom

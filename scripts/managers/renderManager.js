@@ -8,7 +8,7 @@ import { entitiesManager } from './entitiesManager.js';
  * @author black-incendium
  */
 
- let drawManager = (() => {
+ let renderManager = (() => {
 
     let callbacks = null;
 
@@ -30,22 +30,25 @@ import { entitiesManager } from './entitiesManager.js';
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
-    function draw() {
+    // function draw() {
 
-        elements.ctx.clearRect(0, 0, elements.canvas.width, elements.canvas.height)
+    //     elements.ctx.clearRect(0, 0, elements.canvas.width, elements.canvas.height)
 
-        mapManager.drawMap();
-        // entitiesManager.drawEntities();
+    //     mapManager.drawMap();
+    //     // entitiesManager.drawEntities();
 
-        window.requestAnimationFrame(draw);
+    //     window.requestAnimationFrame(draw);
+    // }
+
+    function startRendering() {
+        console.log('render 1')
     }
-
-    initialize();
 
     return Object.freeze({
 
-        draw
+        initialize,
+        startRendering
     });
 })();
 
-export { drawManager };
+export { renderManager };

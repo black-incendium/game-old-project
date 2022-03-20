@@ -16,7 +16,7 @@ let mapManager = (()=>{
 
     let callbacks = null;
     let currentMapId = "testMap1";
-    let maps = {}
+    let maps = {};
 
     function initialize() {
 
@@ -119,16 +119,15 @@ let mapManager = (()=>{
                 y: Math.floor(cameraManager.cameraPosition.y)
             },
             max: {
-                x: Math.floor(cameraManager.cameraPosition.x + cameraManager.gameSize.width) + (cameraManager.cameraPosition.x % 1 == 0 ? -1 : 0),
-                y: Math.floor(cameraManager.cameraPosition.y + cameraManager.gameSize.height) + (cameraManager.cameraPosition.y % 1 == 0 ? -1 : 0)
+                x: Math.floor(cameraManager.cameraPosition.x + cameraManager.cameraViewSize.width) + (cameraManager.cameraPosition.x % 1 == 0 ? -1 : 0),
+                y: Math.floor(cameraManager.cameraPosition.y + cameraManager.cameraViewSize.height) + (cameraManager.cameraPosition.y % 1 == 0 ? -1 : 0)
             }
         }
     }
 
-    initialize();
-
     return Object.freeze({
 
+        initialize,
         drawMap,
         getTilesInViewBoundaries
     });

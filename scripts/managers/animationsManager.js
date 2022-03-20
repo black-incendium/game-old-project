@@ -68,10 +68,9 @@ import { assetsManager } from './assetsManager.js';
         }
     }
 
-    initialize();
-
     return Object.freeze({
         
+        initialize,
         setupAnimation
     });
 })();

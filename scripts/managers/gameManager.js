@@ -1,8 +1,14 @@
 import { userInputManager } from './userInputManager.js';
 import { testManager } from './../development/testManager.js';
 import { resizeManager } from './resizeManager.js';
-import { drawManager } from './drawManager.js';
+import { renderManager } from './renderManager.js';
 import { eventsManager } from './eventsManager.js'
+import { animationsManager } from './animationsManager.js';
+import { assetsManager } from './assetsManager.js';
+import { cameraManager } from './cameraManager.js';
+import { entitiesManager } from './entitiesManager.js';
+import { gameQueueManager } from './gameQueueManager.js';
+import { mapManager } from './mapManager.js';
 
 /**
  * @fileoverview main manager object responsible for game flow
@@ -17,17 +23,16 @@ import { eventsManager } from './eventsManager.js'
 
     function initialize() {
         
+        initializeManagers();
+
         setupCallbacks();
         setupEventListeners();
-
-        resizeManager.startGame();
-
     }
 
     function setupCallbacks() {
 
         callbacks = {
-            someTypeOfDataReadyCallback: countAsynchronousEvents
+            someTypeOfDataReadyCallback: countDataReadyEvents
         };
     }
 
@@ -39,23 +44,31 @@ import { eventsManager } from './eventsManager.js'
         // eventsManager.createEventListener('entitiesManager', 'entitiesDataReady', callbacks.someTypeOfDataReadyCallback);
     }
 
-    function countAsynchronousEvents() {
+    function countDataReadyEvents() {
 
         dataReadyEvents++;
         if (dataReadyEvents == 3) {
-            startDrawing();
+            renderManager.startRendering();
         }
     }
 
-    function startDrawing() {
+    function initializeManagers() {
 
-        drawManager.draw();
+        eventsManager.initialize();
+        animationsManager.initialize();
+        assetsManager.initialize();
+        cameraManager.initialize();
+        // entitiesManager.initialize();
+        // gameQueueManager.initialize();
+        mapManager.initialize();
+        renderManager.initialize();
+        resizeManager.initialize();
+        userInputManager.initialize();
     }
-
-    initialize();
 
     return Object.freeze({
         
+        initialize
     });
 })();
 
