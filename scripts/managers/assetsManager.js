@@ -19,30 +19,16 @@ import { resizeManager } from './resizeManager.js';
 
     function initialize() {
         
-        setupCallbacks();
         setupEvents();
-        setupEventListeners();
 
         createGraphics();
         createAssetsData();
-    }
-
-    function setupCallbacks() {
-
-        callbacks = {
-            
-        };
     }
 
     function setupEvents() {
 
         eventsManager.createContext('assetsManager');
         eventsManager.createEvent('assetsManager', 'assetsDataReady');
-    }
-
-    function setupEventListeners() {
-        
-        //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
     async function createAssetsData() {

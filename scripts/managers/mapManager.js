@@ -20,28 +20,15 @@ let mapManager = (()=>{
 
     function initialize() {
 
-        setupCallbacks();
         setupEvents();
-        setupEventListeners();
 
         createMapData();
-    }
-
-    function setupCallbacks() {
-
-        callbacks = {
-            
-        };
     }
 
     function setupEvents() {
 
         eventsManager.createContext('mapManager');
         eventsManager.createEvent('mapManager', 'mapsDataReady');
-    }
-
-    function setupEventListeners() {
-
     }
 
     function setMap(mapId) {

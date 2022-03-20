@@ -18,23 +18,23 @@ import { entitiesConfig } from './../configs/entitiesConfig.js';
 
     function initialize() {
         
-        setupCallbacks();
-        setupEventListeners();
+        // setupCallbacks();
+        // setupEventListeners();
 
         createEntitiesData();
     }
 
-    function setupCallbacks() {
+    // function setupCallbacks() {
 
-        callbacks = {
+    //     callbacks = {
             
-        };
-    }
+    //     };
+    // }
 
-    function setupEventListeners() {
+    // function setupEventListeners() {
         
-        //eventsManager.createEventListener('', '', callbacks.exampleCallback);
-    }
+    //     //eventsManager.createEventListener('', '', callbacks.exampleCallback);
+    // }
 
     function createEntity({}) {
 

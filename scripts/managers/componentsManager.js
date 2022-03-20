@@ -8,14 +8,11 @@ import { eventsManager } from './eventsManager.js';
 
  let componentsManager = (() => {
 
-    let callbacks = null;
     let components = {};
 
     function initialize() {
         
-        setupCallbacks();
         setupEvents();
-        setupEventListeners();
 
         // components.root = layoutConfig;
         // scanComponentData(components.root);
@@ -23,22 +20,10 @@ import { eventsManager } from './eventsManager.js';
 
     }
 
-    function setupCallbacks() {
-
-        callbacks = {
-            
-        }
-    }
-
     function setupEvents() {
 
         eventsManager.createContext('componentsManager');
         eventsManager.createEvent('componentsManager', 'componentsDataReady');
-    }
-
-    function setupEventListeners() {
-        
-        // eventsManager.createEventListener('componentsManager', 'componentsDataReady', callbacks.componentsDataReadyCallback);
     }
 
     async function createComponentsData() {
