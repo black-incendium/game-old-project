@@ -17,7 +17,6 @@ import { resizeManager } from './resizeManager.js';
 
     function initialize() {
         
-        root = componentsManager.getComponent('root');
     }
 
     // function draw() {
@@ -32,12 +31,13 @@ import { resizeManager } from './resizeManager.js';
 
     function startRendering() {
         
+        root = componentsManager.getComponent('root');
         render();
     }
 
     function render() {
 
-        renderComponent(componentsManager.getComponent('root'), {x:0,y:0});
+        renderComponent(root, {x:0,y:0});
 
         window.requestAnimationFrame(render);
     }
@@ -68,10 +68,10 @@ import { resizeManager } from './resizeManager.js';
 
         if (component.renderFunctionId !== undefined) {
             renderConfig.renderFunctions[component.renderFunctionId](
-                actualOffset.x/root.x*resizeManager.gameSize.width, 
-                actualOffset.y/root.y*resizeManager.gameSize.height,
-                width/root.x*resizeManager.gameSize.width, 
-                height/root.y*resizeManager.gameSize.height
+                actualOffset.x/root.width*resizeManager.gameSize.width, 
+                actualOffset.y/root.height*resizeManager.gameSize.height,
+                width/root.width*resizeManager.gameSize.width, 
+                height/root.height*resizeManager.gameSize.height
             );
         }
 

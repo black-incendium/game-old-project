@@ -16,17 +16,15 @@
                 "map": {
     
                     "renderFunctionId": "map",
-                    "x": 512,
-                    "y": 512,
+                    "x": 256,
+                    "y": 144,
                     "width": 512,
     
                     "aspectRatio": {
                         "width": 16,
                         "height": 9
                     }
-                },
-
-                "eq": {}
+                }
             }
         }
     }

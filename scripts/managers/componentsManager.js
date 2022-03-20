@@ -54,7 +54,6 @@ import { eventsManager } from './eventsManager.js';
 
     function getComponent(componentId) {
 
-        debugger;
         return components[componentId];
     }
 
