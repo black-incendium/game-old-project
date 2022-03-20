@@ -1,6 +1,11 @@
 let assetsConfig = {
+    images: {
+        'playerIdle': 'player_idle.png',
+        'basicTileset': 'basic_tileset.png'
+    },
     imagesJsons: [
-        'player_idle_assets.json'
+        'player_idle_assets.json',
+        'basic_tileset.json'
     ]
 }
 

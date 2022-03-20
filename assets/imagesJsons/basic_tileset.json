@@ -1,6 +1,6 @@
 {
-    "graphicsId": "playerIdle",
-    "prefix": "player_idle_",
+    "graphicsId": "basicTileset",
+    "prefix": "basic_tileset_",
     "frames": [
         {
             "x": 0,

@@ -41,25 +41,23 @@ import { assetsManager } from './assetsManager.js';
         eventsManager.createEventListener('assetsManager', 'assetsDataReady', callbacks.assetsReadyCallback);
     }
 
-    function createAnimationsData() {
+    async function createAnimationsData() {
 
-        animationsConfig.animationsJsons.forEach(jsonName => {
-            fetch(`./../../assets/animationsJsons/${jsonName}`)
-            .then(response => response.json())
-            .then(response => {
+        await Promise.all(animationsConfig.animationsJsons.map(async jsonName => {
+            let response = await fetch(`./../../assets/animationsJsons/${jsonName}`)
+            response = await response.json();
 
-                animationsData[response.name] = {
-                    fps: response.fps, 
-                    frames: []
-                };
+            animationsData[response.name] = {
+                fps: response.fps, 
+                frames: []
+            };
 
-                response.framesNames.forEach(frameName => {
-                    animationsData[response.name].frames.push(assetsManager.getAssetData(frameName));
-                });
-
-                eventsManager.fireEvent('animationsManager', 'animationsDataReady');
+            response.framesNames.forEach(frameName => {
+                animationsData[response.name].frames.push(assetsManager.getAssetData(frameName));
             });
-        })
+
+        }));
+        eventsManager.fireEvent('animationsManager', 'animationsDataReady');
     }
 
     function setupAnimation({entity, animationName, fps}) {
@@ -70,10 +68,9 @@ import { assetsManager } from './assetsManager.js';
         }
     }
 
-    initialize();
-
     return Object.freeze({
         
+        initialize,
         setupAnimation
     });
 })();

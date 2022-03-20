@@ -7,30 +7,29 @@
  let gameQueueManager = (() => {
 
     let callbacks = null;
-    let gameQueue = undefined; // ----------------todo--------------
+    let gameQueue = undefined;
 
     function initialize() {
         
-        setupCallbacks();
-        setupEventListeners();
+        // setupCallbacks();
+        // setupEventListeners();
     }
 
-    function setupCallbacks() {
+    // function setupCallbacks() {
 
-        callbacks = {
+    //     callbacks = {
             
-        };
-    }
+    //     };
+    // }
 
-    function setupEventListeners() {
+    // function setupEventListeners() {
         
-        //eventsManager.createEventListener('', '', callbacks.exampleCallback);
-    }
-
-    initialize();
+    //     //eventsManager.createEventListener('', '', callbacks.exampleCallback);
+    // }
 
     return Object.freeze({
         
+        initialize,
     });
 })();
 
