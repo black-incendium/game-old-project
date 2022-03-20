@@ -1,5 +1,9 @@
 {
+    "width": 1024,
+    "height": 576,
     
+    "renderFunctionId": "test",
+
     "children": {
 
         "loadingScreen": {
@@ -14,17 +18,15 @@
                 "map": {
     
                     "renderFunctionId": "map",
-                    "x": 100,
-                    "y": 100,
-                    "width": 200,
+                    "x": 256,
+                    "y": 144,
+                    "width": 512,
     
                     "aspectRatio": {
                         "width": 16,
                         "height": 9
                     }
-                },
-
-                "eq": {}
+                }
             }
         }
     }

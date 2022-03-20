@@ -3,6 +3,7 @@ import { mapManager } from './mapManager.js';
 import { entitiesManager } from './entitiesManager.js';
 import { renderConfig } from '../configs/renderConfig.js';
 import { componentsManager } from './componentsManager.js';
+import { resizeManager } from './resizeManager.js';
 
 /**
  * @fileoverview manager object responsible for managing frames drawing process
@@ -11,6 +12,8 @@ import { componentsManager } from './componentsManager.js';
  */
 
  let renderManager = (() => {
+
+    let root = null;
 
     function initialize() {
         
@@ -28,22 +31,21 @@ import { componentsManager } from './componentsManager.js';
 
     function startRendering() {
         
-        render()
+        root = componentsManager.getComponent('root');
+        render();
     }
 
     function render() {
 
-        renderComponent(componentsManager.getComponent('root'), {x:0,y:0});
+        renderComponent(root, {x:0,y:0});
 
         window.requestAnimationFrame(render);
     }
 
     function renderComponent(component, actualOffset) {
 
-        let height;
-        let width;
-        component.x ??= 0
-        component.y ??= 0;
+        let height = component.height;
+        let width = component.width;
 
         actualOffset.x += component.x;
         actualOffset.y += component.y;
@@ -65,7 +67,12 @@ import { componentsManager } from './componentsManager.js';
         }
 
         if (component.renderFunctionId !== undefined) {
-            renderConfig.renderFunctions[component.renderFunctionId](actualOffset.x, actualOffset.y, width, height);
+            renderConfig.renderFunctions[component.renderFunctionId](
+                actualOffset.x/root.width*resizeManager.gameSize.width, 
+                actualOffset.y/root.height*resizeManager.gameSize.height,
+                width/root.width*resizeManager.gameSize.width, 
+                height/root.height*resizeManager.gameSize.height
+            );
         }
 
         if (component.children === undefined) return;

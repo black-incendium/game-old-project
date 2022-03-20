@@ -13,8 +13,8 @@ import { eventsManager } from './eventsManager.js';
     let callbacks = null;
     let gameSize = {};
     let gameAspectRatio = {
-        width: 4,
-        height: 3
+        width: 16,
+        height: 9
     }
 
     let canvasPosition = {

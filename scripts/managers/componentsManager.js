@@ -33,11 +33,15 @@ import { eventsManager } from './eventsManager.js';
         components.root = root;
 
         scanComponentData(root);
+        Object.freeze(root);
 
         eventsManager.fireEvent('componentsManager', 'componentsDataReady');
     }
 
     function scanComponentData(component) {
+
+        component.x ??= 0;
+        component.y ??= 0;
 
         if (component.children === undefined) return;
 
