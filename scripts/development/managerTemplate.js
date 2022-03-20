@@ -1,13 +1,12 @@
 /**
- * @fileoverview manager object that is responsible for handling game queue
+ * @fileoverview 
  * 
  * @author black-incendium
  */
 
- let gameQueueManager = (() => {
+ let x = (() => {
 
     let callbacks = null;
-    let gameQueue = undefined; // ----------------todo--------------
 
     function initialize() {
         
@@ -27,10 +26,11 @@
         //eventsManager.createEventListener('', '', callbacks.exampleCallback);
     }
 
+    initialize();
+
     return Object.freeze({
         
-        initialize,
     });
 })();
 
-export { gameQueueManager };
+export {  };

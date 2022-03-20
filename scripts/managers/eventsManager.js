@@ -32,6 +32,7 @@ let eventsManager = (() => {
                 listener.callback(data);
             }
         });
+        // debug.print(`event: ${event}`)
     }
 
     function createEventListener(context, event, callback) {
@@ -90,9 +91,9 @@ let eventsManager = (() => {
         contexts[context][eventName] = true;
     }
 
-    initialize();
-
     return Object.freeze({
+
+        initialize,
         fireEvent,
         createEventListener,
         removeEventListener,

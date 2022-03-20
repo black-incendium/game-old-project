@@ -1,4 +1,6 @@
+import { elements } from '../elements.js';
 import { debug } from './../debug/debug.js';
+import { eventsManager } from './eventsManager.js';
 
 /**
  * @fileoverview manager object that is responsible for camera (which part of map is rendered on the screen at the moment)
@@ -18,15 +20,8 @@ import { debug } from './../debug/debug.js';
         setupCallbacks();
         setupEventListeners();
 
-        cameraPosition = {
-            x: 0,
-            y: 0
-        }
-
-        cameraAspectRatio = {
-            width: 16,
-            height: 9
-        }
+        cameraPosition = {x: 0, y: 0}
+        cameraAspectRatio = {width: 3, height: 3}
 
         cameraZoom = 1;
     }
@@ -40,24 +35,20 @@ import { debug } from './../debug/debug.js';
 
     function setupEventListeners() {
         
-        //eventsManager.createEventListener('', '', callbacks.exampleCallback);
+        // eventsManager.createEventListener('userInput', 'resize', callbacks.resizeCallback);
     }
 
-    function isInTheView({x, y}) {
-
-        if (x < Math.floor(cameraPosition.x)) return false;
-        if (x > Math.ceil(cameraPosition.x + cameraAspectRatio.width * 1 / cameraZoom)) return false;
-        if (y < Math.floor(cameraPosition.y)) return false;
-        if (y > Math.ceil(cameraPosition.y + cameraAspectRatio.height * 1 / cameraZoom)) return false;
-
-        return true;
+    function setCameraPosition(x, y) {
+        cameraPosition = {
+            x,
+            y
+        }
     }
-
-    initialize();
 
     return Object.freeze({
 
-        isInTheView,
+        initialize,
+        setCameraPosition,
 
         get cameraPosition() {
             return cameraPosition;
@@ -69,7 +60,15 @@ import { debug } from './../debug/debug.js';
 
         get cameraZoom() {
             return cameraZoom;
+        },
+
+        get cameraViewSize() {
+            return {
+                width: cameraAspectRatio.width/cameraZoom,
+                height: cameraAspectRatio.height/cameraZoom
+            }
         }
+
     });
 })();
 

@@ -1,8 +1,9 @@
 import { elements } from './../elements.js';
+import { cameraManager } from './cameraManager.js';
 import { eventsManager } from './eventsManager.js';
 
 /**
- * @fileoverview manager object responsible for making changes needed while game is resized
+ * @fileoverview manager object responsible for making changes needed when game is resized
  * 
  * @author black-incendium
  */
@@ -10,16 +11,21 @@ import { eventsManager } from './eventsManager.js';
  let resizeManager = (() => {
 
     let callbacks = null;
-    let gameUpperLeftCorner = null;
+    let gameSize = {};
+    let gameAspectRatio = {
+        width: 4,
+        height: 3
+    }
+
+    let canvasPosition = {
+        x: 0,
+        y: 0
+    }
 
     function initialize() {
         
         setupCallbacks();
         setupEventListeners();
-
-        gameUpperLeftCorner = {};
-
-        calculateUpperLeftCornerPosition()
     }
 
     function setupCallbacks() {
@@ -34,30 +40,50 @@ import { eventsManager } from './eventsManager.js';
         eventsManager.createEventListener('userInput', 'resize', callbacks.gameResized);
     }
 
-    function gameResized({width, height}) {
+    // function gameResized({width, height}) {
 
-        elements.canvas.width = width;
-        elements.canvas.height = height;
+    //     // elements.canvas.width = width;
+    //     // elements.canvas.height = height;
+    // }
+
+    function gameResized() {
+
+        if (window.innerWidth/window.innerHeight > gameAspectRatio.width/gameAspectRatio.height) {
+            
+            gameSize.width = window.innerHeight/gameAspectRatio.height*gameAspectRatio.width;
+            gameSize.height = window.innerHeight
+        } else {
+            
+            gameSize.width = window.innerWidth;
+            gameSize.height = window.innerWidth/gameAspectRatio.width*gameAspectRatio.height
+        }
+
+        elements.canvas.width = gameSize.width;
+        elements.canvas.height = gameSize.height;
+        elements.ctx.imageSmoothingEnabled = false;
+        // elements.ctx.translate(-0.5, -0.5)
+
+        canvasPosition.x = (window.innerWidth - gameSize.width)/2;
+        canvasPosition.y = (window.innerHeight - gameSize.height)/2;
+
     }
 
     function startGame() {
         
-        gameResized({width: window.innerWidth, height: window.innerHeight});
+        gameResized();
     }
-
-    function calculateUpperLeftCornerPosition() {
-
-        // gameUpperLeftCorner.x = 
-        // gameUpperLeftCorner.y = 
-    }
-
-    initialize();
 
     return Object.freeze({
         
+        initialize,
         startGame,
-        get gameUpperLeftCorner() {
-            return gameUpperLeftCorner
+
+        get gameSize() {
+            return gameSize;
+        },
+
+        get canvasPosition() {
+            return canvasPosition
         }
     });
 })();
