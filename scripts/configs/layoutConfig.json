@@ -1,4 +1,6 @@
 {
+    "width": 1024,
+    "height": 576,
     
     "children": {
 
@@ -14,9 +16,9 @@
                 "map": {
     
                     "renderFunctionId": "map",
-                    "x": 100,
-                    "y": 100,
-                    "width": 200,
+                    "x": 512,
+                    "y": 512,
+                    "width": 512,
     
                     "aspectRatio": {
                         "width": 16,
