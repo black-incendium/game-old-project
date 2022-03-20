@@ -40,14 +40,32 @@ import { componentsManager } from './componentsManager.js';
 
     function renderComponent(component, actualOffset) {
 
+        let height;
+        let width;
         component.x ??= 0
         component.y ??= 0;
 
         actualOffset.x += component.x;
         actualOffset.y += component.y;
 
+        if (component.aspectRatio !== undefined) {
+
+            if (component.width !== undefined) {
+                
+                width = component.width
+                height = component.width/component.aspectRatio.width*component.aspectRatio.height
+            } else {
+                
+                height = component.height
+                width = component.height/component.aspectRatio.height*component.aspectRatio.width
+            }
+        } else {
+            
+            // TODO
+        }
+
         if (component.renderFunctionId !== undefined) {
-            renderConfig.renderFunctions[component.renderFunctionId](actualOffset.x, actualOffset.y ,100,100);
+            renderConfig.renderFunctions[component.renderFunctionId](actualOffset.x, actualOffset.y, width, height);
         }
 
         if (component.children === undefined) return;
