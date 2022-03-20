@@ -44,8 +44,8 @@ import { resizeManager } from './resizeManager.js';
 
     function renderComponent(component, actualOffset) {
 
-        let height;
-        let width;
+        let height = component.height;
+        let width = component.width;
 
         actualOffset.x += component.x;
         actualOffset.y += component.y;

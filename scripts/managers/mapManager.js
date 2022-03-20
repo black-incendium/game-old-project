@@ -87,6 +87,12 @@ let mapManager = (()=>{
         elements.ctx.fillStyle = "aqua";
         elements.ctx.fillRect(x,y,width,height);
     }
+    
+    function testRender(x, y, width, height) {
+        
+        elements.ctx.fillStyle = "darkblue";
+        elements.ctx.fillRect(x,y,width,height);
+    }
 
     async function createMapData() {
 
@@ -121,7 +127,8 @@ let mapManager = (()=>{
     return Object.freeze({
 
         initialize,
-        renderMap
+        renderMap,
+        testRender
     });
 })();
 

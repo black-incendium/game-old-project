@@ -2,6 +2,8 @@
     "width": 1024,
     "height": 576,
     
+    "renderFunctionId": "test",
+
     "children": {
 
         "loadingScreen": {
