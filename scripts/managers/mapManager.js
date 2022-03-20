@@ -95,6 +95,12 @@ let mapManager = (()=>{
         // debugger;
     }
 
+    function renderMap(x, y, width, height) {
+
+        elements.ctx.fillStyle = "aqua";
+        elements.ctx.fillRect(x,y,width,height);
+    }
+
     async function createMapData() {
 
         await Promise.all(mapConfig.mapsJsons.map(async jsonName => {
@@ -128,8 +134,7 @@ let mapManager = (()=>{
     return Object.freeze({
 
         initialize,
-        drawMap,
-        getTilesInViewBoundaries
+        renderMap
     });
 })();
 

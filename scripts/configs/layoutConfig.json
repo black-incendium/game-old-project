@@ -1,0 +1,30 @@
+{
+    
+    "children": {
+
+        "loadingScreen": {
+
+            "visible": false
+        },
+    
+        "gameContainer": {
+    
+            "children": {
+    
+                "map": {
+    
+                    "renderFunctionId": "map",
+                    "x": 100,
+                    "y": 100,
+    
+                    "aspectRatio": {
+                        "width": 16,
+                        "height": 9
+                    }
+                },
+
+                "eq": {}
+            }
+        }
+    }
+}
