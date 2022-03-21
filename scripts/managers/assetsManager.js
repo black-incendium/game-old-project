@@ -70,28 +70,16 @@ import { resizeManager } from './resizeManager.js';
         return assetsData[assetName];
     }
 
-    function drawAsset(assetId, x, y, width, height) {
-        
-        let tileSize = resizeManager.gameSize.width/cameraManager.cameraAspectRatio.width;
+    function getAsset(assetName) {
 
-        elements.ctx.drawImage(
-            graphics[assetsData[assetId].graphicsId],
-            assetsData[assetId].x,
-            assetsData[assetId].y,
-            assetsData[assetId].width,
-            assetsData[assetId].height,
-            x * tileSize,
-            y * tileSize,
-            width * tileSize,
-            height * tileSize
-        );
+        return graphics[assetName]
     }
 
     return Object.freeze({
 
         initialize,
         getAssetData,
-        drawAsset
+        getAsset
     });
 })();
 

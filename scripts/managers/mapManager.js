@@ -17,6 +17,8 @@ let mapManager = (()=>{
     let callbacks = null;
     let currentMapId = "testMap1";
     let maps = {};
+    let mapPosition = {};
+    let mapSize = {};
 
     function initialize() {
 
@@ -38,24 +40,31 @@ let mapManager = (()=>{
 
     function drawTile(x, y) {
         
-        let tileId = maps[currentMapId].data[x][y];
+        let tileId = maps[currentMapId].data?.[x]?.[y];
+        if (tileId === undefined) return;
+
         let assetId = maps[currentMapId].tilesetPrefix + tileId;
-        let tileX = x - cameraManager.cameraPosition.x;
-        let tileY = y - cameraManager.cameraPosition.y;
+        let assetData = assetsManager.getAssetData(assetId);
+
+        let tileWidth = mapSize.width/cameraManager.cameraViewSize.width;
+        let tileHeight = mapSize.height/cameraManager.cameraViewSize.height;
+
+        let tileX = (x - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x;
+        let tileY = (y - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y;
         // let nextTileX = Math.floor(x - cameraManager.cameraPosition.x + 1) * cameraManager.tileSize);
         // let netxTileY = Math.floor((y - cameraManager.cameraPosition.y + 1) * cameraManager.tileSize);
 
-
-        // debugger
-        assetsManager.drawAsset(
-            assetId, 
+        elements.ctx.drawImage(
+            assetsManager.getAsset(assetData.graphicsId),
+            assetData.x,
+            assetData.y,
+            assetData.width,
+            assetData.height,
             tileX,
             tileY,
-            1,
-            1
-        );
-
-        
+            tileWidth,
+            tileHeight
+        )
     }
 
     function drawMap() {
@@ -84,8 +93,27 @@ let mapManager = (()=>{
 
     function renderMap(x, y, width, height) {
 
+        mapPosition.x = x;
+        mapPosition.y = y;
+        mapSize.width = width;
+        mapSize.height = height;
+
         elements.ctx.fillStyle = "aqua";
         elements.ctx.fillRect(x,y,width,height);
+
+        let tilesInViewBoundaries = getTilesInViewBoundaries();
+
+        for (let i=tilesInViewBoundaries.min.x; i<=tilesInViewBoundaries.max.x; i++) {
+            for (let j=tilesInViewBoundaries.min.y; j<=tilesInViewBoundaries.max.y; j++) {
+
+                drawTile(i, j)
+            }
+        }
+
+        cameraManager.setCameraPosition(
+            cameraManager.cameraPosition.x+0.03,
+            cameraManager.cameraPosition.y+0.03,
+        )
     }
     
     function testRender(x, y, width, height) {
