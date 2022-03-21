@@ -51,20 +51,53 @@ let mapManager = (()=>{
 
         let tileX = (x - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x;
         let tileY = (y - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y;
-        // let nextTileX = Math.floor(x - cameraManager.cameraPosition.x + 1) * cameraManager.tileSize);
-        // let netxTileY = Math.floor((y - cameraManager.cameraPosition.y + 1) * cameraManager.tileSize);
 
+        let nextTileX = (x + 1 - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x;
+        let nextTileY = (y + 1 - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y;
+
+        let sourceX = assetData.x;
+        let sourceY = assetData.y;
+        let sourceWidth = assetData.width;
+        let sourceHeight = assetData.height;
+
+        if (x < cameraManager.cameraPosition.x) {
+
+            sourceX = (cameraManager.cameraPosition.x - x) * assetData.width + assetData.x;
+            sourceWidth = assetData.width - ((cameraManager.cameraPosition.x - x) * assetData.width);
+            tileX = mapPosition.x
+        } 
+
+        if (y < cameraManager.cameraPosition.y) {
+
+            sourceY = (cameraManager.cameraPosition.y - y) * assetData.height + assetData.y;
+            sourceHeight = assetData.height - ((cameraManager.cameraPosition.y - y) * assetData.height);
+            tileY = mapPosition.y
+        } 
+
+        if (x + 1 > cameraManager.cameraPosition.x + cameraManager.cameraViewSize.width) {
+
+            sourceWidth = (cameraManager.cameraViewSize.width - (x - cameraManager.cameraPosition.x)) * assetData.width;
+            nextTileX = mapPosition.x + mapSize.width;
+        }
+
+        if (y + 1 > cameraManager.cameraPosition.y + cameraManager.cameraViewSize.height) {
+
+            sourceHeight = (cameraManager.cameraViewSize.height - (y - cameraManager.cameraPosition.y)) * assetData.height;
+            nextTileY = mapPosition.y + mapSize.height;
+        }
+        console.log(nextTileX, tileX)
+        // if (x==1 && y==1) debugger;
         elements.ctx.drawImage(
             assetsManager.getAsset(assetData.graphicsId),
-            assetData.x,
-            assetData.y,
-            assetData.width,
-            assetData.height,
+            sourceX,
+            sourceY,
+            sourceWidth,
+            sourceHeight,
             tileX,
             tileY,
-            tileWidth,
-            tileHeight
-        )
+            nextTileX - tileX,
+            nextTileY - tileY
+        );
     }
 
     function drawMap() {
@@ -111,8 +144,8 @@ let mapManager = (()=>{
         }
 
         cameraManager.setCameraPosition(
-            cameraManager.cameraPosition.x+0.03,
-            cameraManager.cameraPosition.y+0.03,
+            cameraManager.cameraPosition.x+0.01,
+            cameraManager.cameraPosition.y+0.01,
         )
     }
     

@@ -18,13 +18,13 @@
                 "map": {
     
                     "renderFunctionId": "map",
-                    "x": 256,
-                    "y": 144,
-                    "width": 512,
+                    "x": 16,
+                    "y": 9,
+                    "width": 400,
     
                     "aspectRatio": {
-                        "width": 16,
-                        "height": 9
+                        "width": 1,
+                        "height": 1
                     }
                 }
             }

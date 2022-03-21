@@ -63,7 +63,7 @@ import { eventsManager } from './eventsManager.js';
         elements.canvas.width = gameSize.width;
         elements.canvas.height = gameSize.height;
         elements.ctx.imageSmoothingEnabled = false;
-        // elements.ctx.translate(-0.5, -0.5)
+        elements.ctx.translate(-0.5, -0.5)
 
         canvasPosition.x = (window.innerWidth - gameSize.width)/2;
         canvasPosition.y = (window.innerHeight - gameSize.height)/2;

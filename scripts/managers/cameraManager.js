@@ -17,7 +17,7 @@ import { eventsManager } from './eventsManager.js';
     function initialize() {
 
         cameraPosition = {x: 0, y: 0}
-        cameraAspectRatio = {width: 16, height: 9}
+        cameraAspectRatio = {width: 1, height: 1}
 
         cameraZoom = 1;
     }
