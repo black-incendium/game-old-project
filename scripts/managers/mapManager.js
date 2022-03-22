@@ -49,11 +49,11 @@ let mapManager = (()=>{
         let tileWidth = mapSize.width/cameraManager.cameraViewSize.width;
         let tileHeight = mapSize.height/cameraManager.cameraViewSize.height;
 
-        let tileX = (x - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x;
-        let tileY = (y - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y;
+        let tileX = Math.floor((x - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x);
+        let tileY = Math.floor((y - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y);
 
-        let nextTileX = (x + 1 - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x;
-        let nextTileY = (y + 1 - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y;
+        let nextTileX = Math.floor((x + 1 - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x);
+        let nextTileY = Math.floor((y + 1 - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y);
 
         let sourceX = assetData.x;
         let sourceY = assetData.y;
@@ -85,8 +85,7 @@ let mapManager = (()=>{
             sourceHeight = (cameraManager.cameraViewSize.height - (y - cameraManager.cameraPosition.y)) * assetData.height;
             nextTileY = mapPosition.y + mapSize.height;
         }
-        console.log(nextTileX, tileX)
-        // if (x==1 && y==1) debugger;
+        
         elements.ctx.drawImage(
             assetsManager.getAsset(assetData.graphicsId),
             sourceX,
