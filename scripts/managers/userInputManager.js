@@ -27,6 +27,7 @@ import { resizeManager } from './resizeManager.js';
         eventsManager.createEvent('userInput', 'click');
         eventsManager.createEvent('userInput', 'keydown');
         eventsManager.createEvent('userInput', 'resize');
+        eventsManager.createEvent('userInput', 'wheelUsed');
     }
 
     function setupDocumentEventListeners() {
@@ -37,6 +38,10 @@ import { resizeManager } from './resizeManager.js';
 
         document.addEventListener('keydown', e => {
             eventsManager.fireEvent('userInput', 'keydown', e);
+        });
+
+        document.addEventListener('wheel', e => {
+            eventsManager.fireEvent('userInput', 'wheelUsed', e);
         });
 
         window.addEventListener('resize', e => {

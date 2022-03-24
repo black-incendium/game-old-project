@@ -49,11 +49,11 @@ let mapManager = (()=>{
         let tileWidth = mapSize.width/cameraManager.cameraViewSize.width;
         let tileHeight = mapSize.height/cameraManager.cameraViewSize.height;
 
-        let tileX = Math.floor((x - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x);
-        let tileY = Math.floor((y - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y);
+        let tileX = ((x - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x);
+        let tileY = ((y - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y);
 
-        let nextTileX = Math.floor((x + 1 - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x);
-        let nextTileY = Math.floor((y + 1 - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y);
+        let nextTileX = ((x + 1 - cameraManager.cameraPosition.x)*tileWidth + mapPosition.x);
+        let nextTileY = ((y + 1 - cameraManager.cameraPosition.y)*tileHeight + mapPosition.y);
 
         let sourceX = assetData.x;
         let sourceY = assetData.y;
@@ -86,6 +86,9 @@ let mapManager = (()=>{
             nextTileY = mapPosition.y + mapSize.height;
         }
         
+        // elements.ctx.fillStyle = "black";
+        // elements.ctx.fillRect(tileX, tileY, 90,90)
+
         elements.ctx.drawImage(
             assetsManager.getAsset(assetData.graphicsId),
             sourceX,
@@ -94,9 +97,16 @@ let mapManager = (()=>{
             sourceHeight,
             tileX,
             tileY,
-            nextTileX - tileX,
-            nextTileY - tileY
+            Math.ceil(tileWidth),
+            Math.ceil(tileHeight)
+            // nextTileX - tileX,
+            // nextTileY - tileY
         );
+
+        console.log(Math.ceil(tileWidth))
+        if (x==1 && y==1) {
+            // console.log(nextTileX - tileX, nextTileY - tileY)
+        }
     }
 
     function drawMap() {
@@ -143,8 +153,8 @@ let mapManager = (()=>{
         }
 
         cameraManager.setCameraPosition(
-            cameraManager.cameraPosition.x+0.01,
-            cameraManager.cameraPosition.y+0.01,
+            cameraManager.cameraPosition.x+0.02,
+            cameraManager.cameraPosition.y+0.02,
         )
     }
     

@@ -67,6 +67,8 @@ import { componentsManager } from './componentsManager.js';
         // gameQueueManager.initialize();
         renderManager.initialize();
         userInputManager.initialize();
+
+        testManager.initialize();
     }
 
     return Object.freeze({

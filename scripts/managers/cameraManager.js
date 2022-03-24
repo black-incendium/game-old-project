@@ -10,23 +10,44 @@ import { eventsManager } from './eventsManager.js';
 
  let cameraManager = (() => {
 
+    let callbacks = null;
     let cameraPosition = null;
     let cameraAspectRatio = null
     let cameraZoom = 0;
 
     function initialize() {
 
+        setupCallbacks();
+        setupEventListeners();
+
         cameraPosition = {x: 0, y: 0}
-        cameraAspectRatio = {width: 1, height: 1}
+        cameraAspectRatio = {width: 16, height: 9}
 
         cameraZoom = 1;
     }
 
-    function setCameraPosition(x, y) {
-        cameraPosition = {
-            x,
-            y
+    function setupCallbacks() {
+
+        callbacks = {
+            changeZoomOnScroll: changeZoom
         }
+    }
+
+    function setupEventListeners() {
+
+        eventsManager.createEventListener('userInput', 'wheelUsed', callbacks.changeZoomOnScroll)
+    }
+
+    function setCameraPosition(x, y) {
+        
+        cameraPosition.x = x;
+        cameraPosition.y = y;
+    }
+
+    function changeZoom(data) {
+        
+        cameraZoom -= data.deltaY/1000;
+        cameraZoom = Math.max(Math.min(cameraZoom, 3), 0.5);
     }
 
     return Object.freeze({

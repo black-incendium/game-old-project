@@ -2,6 +2,7 @@ import { debug } from "./../debug/debug.js";
 import { eventsManager } from './../managers/eventsManager.js';
 import { entitiesManager } from './../managers/entitiesManager.js';
 import { assetsManager } from "../managers/assetsManager.js";
+import { cameraManager } from "../managers/cameraManager.js";
 
 /**
  * @fileoverview test manager object that exist only to not pollute any other files while testing new functionalities during early stages of development
@@ -31,12 +32,16 @@ import { assetsManager } from "../managers/assetsManager.js";
 
     function setupEventListeners() {
         
-        // eventsManager.createEventListener('animationsManager', 'animationsDataReady', callbacks.callback1);
+        // eventsManager.createEventListener('userInput', 'click', callbacks.callback1);
     }
 
     function callback1(data) {
         
         // assetsManager.drawAsset('player_idle_0',0,0,100,100);
+        cameraManager.setCameraPosition(
+            cameraManager.cameraPosition.x+0.01,
+            cameraManager.cameraPosition.y+0.01,
+        )
     }
 
     function test(){
@@ -46,10 +51,9 @@ import { assetsManager } from "../managers/assetsManager.js";
         // console.log(entitiesManager.getActors())
     }
 
-    initialize();
-
     return Object.freeze({
         
+        initialize
     });
 })();
 

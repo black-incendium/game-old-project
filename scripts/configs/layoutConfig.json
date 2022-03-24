@@ -20,11 +20,11 @@
                     "renderFunctionId": "map",
                     "x": 16,
                     "y": 9,
-                    "width": 400,
+                    "width": 992,
     
                     "aspectRatio": {
-                        "width": 1,
-                        "height": 1
+                        "width": 16,
+                        "height": 9
                     }
                 }
             }
