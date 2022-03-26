@@ -72,6 +72,14 @@ import { eventsManager } from './eventsManager.js';
                 width: cameraAspectRatio.width/cameraZoom,
                 height: cameraAspectRatio.height/cameraZoom
             }
+        },
+
+        get cameraPositionInCanvasUnits() {
+            let tileSize = elements.canvas.width/(cameraAspectRatio.width/cameraZoom);
+            return {
+                x: Math.floor(cameraPosition.x*tileSize),
+                y: Math.floor(cameraPosition.y*tileSize)
+            }
         }
 
     });
