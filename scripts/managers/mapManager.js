@@ -95,15 +95,15 @@ let mapManager = (()=>{
             sourceY,
             sourceWidth,
             sourceHeight,
-            tileX,
-            tileY,
-            Math.ceil(tileWidth),
-            Math.ceil(tileHeight)
+            Math.floor(tileX),
+            Math.floor(tileY),
+            Math.floor(nextTileX) - Math.floor(tileX),
+            Math.floor(nextTileY) - Math.floor(tileY),
             // nextTileX - tileX,
             // nextTileY - tileY
         );
 
-        console.log(Math.ceil(tileWidth))
+        // console.log(Math.ceil(tileWidth))
         if (x==1 && y==1) {
             // console.log(nextTileX - tileX, nextTileY - tileY)
         }
@@ -127,7 +127,7 @@ let mapManager = (()=>{
         // drawTile(0,1)
         // drawTile(1,0)
         // drawTile(2,0)
-        drawTile(1,1)
+        // drawTile(1,1)
         // drawTile(3,0)
         // drawTile(4,0);
         // debugger;
@@ -152,9 +152,11 @@ let mapManager = (()=>{
             }
         }
 
+        if (cameraManager.cameraPosition.x > 10) return
+
         cameraManager.setCameraPosition(
-            cameraManager.cameraPosition.x+0.02,
-            cameraManager.cameraPosition.y+0.02,
+            cameraManager.cameraPosition.x+0.05,
+            cameraManager.cameraPosition.y+0.0,
         )
     }
     

@@ -18,9 +18,9 @@
                 "map": {
     
                     "renderFunctionId": "map",
-                    "x": 16,
-                    "y": 9,
-                    "width": 992,
+                    "x": 100,
+                    "y": 100,
+                    "width": 800,
     
                     "aspectRatio": {
                         "width": 16,

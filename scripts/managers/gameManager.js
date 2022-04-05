@@ -49,30 +49,34 @@ import { componentsManager } from './componentsManager.js';
     function countDataReadyEvents() {
 
         dataReadyEvents++;
-        if (dataReadyEvents == 4) {
-            // renderManager.startRendering();
-            let x = 0
-            function drawScene() {
-                let ctx = document.querySelector('canvas').getContext('2d');
-                ctx.clearRect(0,0,10000,10000);
-                ctx.drawImage(
-                assetsManager.getAsset('basicTileset'),
-                0,
-                0,
-                16,
-                16,
-                x,
-                x,
-                200,
-                200
-                // nextTileX - tileX,
-                // nextTileY - tileY)
-                );
-                x++;
-                window.requestAnimationFrame(drawScene)
-            }
-            drawScene();
-        }
+        
+        if (dataReadyEvents != 4) return;
+            
+        renderManager.startRendering();
+        
+        // let x = 0
+            // function drawScene() {
+            //     let ctx = document.querySelector('canvas').getContext('2d');
+            //     // ctx.translate(0.5,0.5)
+            //     ctx.clearRect(0,0,10000,10000);
+            //     ctx.drawImage(
+            //     assetsManager.getAsset('basicTileset'),
+            //     0,
+            //     0,
+            //     16,
+            //     16,
+            //     Math.floor(x),
+            //     Math.floor(x),
+            //     400,
+            //     400
+            //     // nextTileX - tileX,
+            //     // nextTileY - tileY)
+            //     );
+            //     x+=1.2;
+            //     window.requestAnimationFrame(drawScene)
+            // }
+            // drawScene();
+        
     }
 
     function initializeManagers() {

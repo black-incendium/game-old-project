@@ -17,11 +17,6 @@ import { eventsManager } from './eventsManager.js';
         height: 9
     }
 
-    let canvasPosition = {
-        x: 0,
-        y: 0
-    }
-
     function initialize() {
         
         setupCallbacks();
@@ -52,22 +47,19 @@ import { eventsManager } from './eventsManager.js';
 
         if (window.innerWidth/window.innerHeight > gameAspectRatio.width/gameAspectRatio.height) {
             
-            gameSize.width = window.innerHeight/gameAspectRatio.height*gameAspectRatio.width;
-            gameSize.height = window.innerHeight
+            gameSize.width = window.innerHeight/gameAspectRatio.height*gameAspectRatio.width//*window.devicePixelRatio;
+            gameSize.height = window.innerHeight//*window.devicePixelRatio
         } else {
             
-            gameSize.width = window.innerWidth;
-            gameSize.height = window.innerWidth/gameAspectRatio.width*gameAspectRatio.height
+            gameSize.width = window.innerWidth//*window.devicePixelRatio;
+            gameSize.height = window.innerWidth/gameAspectRatio.width*gameAspectRatio.height//*window.devicePixelRatio
         }
 
         elements.canvas.width = gameSize.width;
         elements.canvas.height = gameSize.height;
+        // elements.canvas.style.transform = `translate(-50%,-50%) scale(${1/window.devicePixelRatio})`;
         elements.ctx.imageSmoothingEnabled = false;
         elements.ctx.translate(-0.5, -0.5)
-
-        canvasPosition.x = (window.innerWidth - gameSize.width)/2;
-        canvasPosition.y = (window.innerHeight - gameSize.height)/2;
-
     }
 
     return Object.freeze({
@@ -77,10 +69,6 @@ import { eventsManager } from './eventsManager.js';
         get gameSize() {
             return gameSize;
         },
-
-        get canvasPosition() {
-            return canvasPosition
-        }
     });
 })();
 

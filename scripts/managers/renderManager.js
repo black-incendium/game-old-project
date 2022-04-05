@@ -50,9 +50,9 @@ import { resizeManager } from './resizeManager.js';
         actualOffset.x += component.x;
         actualOffset.y += component.y;
 
-        if (component.aspectRatio !== undefined) {
+        if (component.aspectRatio != undefined) {
 
-            if (component.width !== undefined) {
+            if (component.width != undefined) {
                 
                 width = component.width
                 height = component.width/component.aspectRatio.width*component.aspectRatio.height
@@ -66,7 +66,7 @@ import { resizeManager } from './resizeManager.js';
             // TODO
         }
 
-        if (component.renderFunctionId !== undefined) {
+        if (component.renderFunctionId != undefined) {
             renderConfig.renderFunctions[component.renderFunctionId](
                 actualOffset.x/root.width*resizeManager.gameSize.width, 
                 actualOffset.y/root.height*resizeManager.gameSize.height,
@@ -75,7 +75,7 @@ import { resizeManager } from './resizeManager.js';
             );
         }
 
-        if (component.children === undefined) return;
+        if (component.children == undefined) return;
 
         Object.getOwnPropertyNames(component.children).forEach(propertyName => {
             renderComponent(component.children[propertyName], actualOffset);

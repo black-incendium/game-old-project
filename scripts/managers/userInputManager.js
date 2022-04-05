@@ -52,8 +52,8 @@ import { resizeManager } from './resizeManager.js';
         });
 
         document.addEventListener('mousemove', e => {
-            cursorPosition.x = e.x - resizeManager.canvasPosition.x;
-            cursorPosition.y = e.y - resizeManager.canvasPosition.y;
+            // cursorPosition.x = e.x - resizeManager.canvasPosition.x;
+            // cursorPosition.y = e.y - resizeManager.canvasPosition.y;
         })
     }
 
