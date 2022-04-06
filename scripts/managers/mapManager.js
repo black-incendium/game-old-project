@@ -89,6 +89,8 @@ let mapManager = (()=>{
         // elements.ctx.fillStyle = "black";
         // elements.ctx.fillRect(tileX, tileY, 90,90)
 
+        let drawnTileSize = Math.floor(mapSize.width/cameraManager.cameraViewSize.width) + 
+
         elements.ctx.drawImage(
             assetsManager.getAsset(assetData.graphicsId),
             sourceX,
